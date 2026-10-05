@@ -21,7 +21,38 @@ public final class CriarBanco {
     private CriarBanco() {
     }
 
+    /**
+     * Cria as tabelas, aplica migrações e índices.
+     * O catálogo de jogos NÃO é carregado aqui: use o endpoint
+     * administrativo /admin/carregar-catalogo.
+     */
     public static void criarTabela() {
+        try {
+            inicializarTabelasAbsolutas();
+
+            try (Connection conexao = Conexao.conectar()) {
+                if (conexao == null) {
+                    throw new IllegalStateException("Não foi possível conectar ao SQLite.");
+                }
+
+                try (Statement stmt = conexao.createStatement()) {
+                    stmt.execute("PRAGMA foreign_keys = ON");
+                    migrarBancoAntigo(stmt);
+                    criarIndices(stmt);
+                }
+
+                migrarSenhas(conexao);
+            }
+
+            System.out.println("Banco do Inventory inicializado com sucesso.");
+        } catch (Exception e) {
+            System.err.println("Erro ao inicializar o banco do Inventory:");
+            e.printStackTrace();
+        }
+    }
+
+    /** Apenas cria as tabelas, sem migrações, índices ou carga de dados. */
+    private static void inicializarTabelasAbsolutas() throws Exception {
         try (Connection conexao = Conexao.conectar()) {
             if (conexao == null) {
                 throw new IllegalStateException("Não foi possível conectar ao SQLite.");
@@ -30,16 +61,7 @@ public final class CriarBanco {
             try (Statement stmt = conexao.createStatement()) {
                 stmt.execute("PRAGMA foreign_keys = ON");
                 criarTabelas(stmt);
-                migrarBancoAntigo(stmt);
-                criarIndices(stmt);
-                migrarSenhas(conexao);
-                carregarCatalogo(conexao);
             }
-
-            System.out.println("Banco do Inventory inicializado com sucesso.");
-        } catch (Exception e) {
-            System.err.println("Erro ao inicializar o banco do Inventory:");
-            e.printStackTrace();
         }
     }
 
@@ -313,7 +335,12 @@ public final class CriarBanco {
         }
     }
 
-    private static void carregarCatalogo(Connection conexao) throws Exception {
+    /**
+     * Carrega o catálogo de jogos a partir de jogos.csv.
+     * Deve ser chamado apenas pelo endpoint administrativo.
+     * É idempotente: não faz nada se o catálogo já foi carregado.
+     */
+    public static void carregarCatalogo(Connection conexao) throws Exception {
         if (catalogoJaCarregado(conexao)) {
             return;
         }

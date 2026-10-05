@@ -187,7 +187,7 @@ public class EmailUtil {
                 + "font-size:14px;"
                 + "color:#999999;"
                 + "'>"
-                + "Esse código é válido por 10 minutos."
+                + "Esse código é válido por 24 horas."
                 + "</p>"
 
                 + "<p style='"
