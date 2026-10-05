@@ -33,7 +33,6 @@ Backend
 - SQLite
 - Gson
 - BCrypt
-- JavaMail
 
  Frontend
 - HTML
