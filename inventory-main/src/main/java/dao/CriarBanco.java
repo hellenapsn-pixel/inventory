@@ -339,7 +339,7 @@ public final class CriarBanco {
         }
     }
 
-    private static void carregarCatalogo(Connection conexao) throws Exception {
+    public static void carregarCatalogo(Connection conexao) throws Exception {
         String sql =
                 "INSERT INTO jogo " +
                 "(steam_app_id, titulo, descricao, genero, plataforma, capa) " +
