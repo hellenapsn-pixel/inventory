@@ -7,11 +7,6 @@ import util.PasswordUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.security.SecureRandom;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -251,35 +246,16 @@ public class CadastroServlet extends HttpServlet {
             );
 
             // =========================================
-            // SALVAR CADASTRO PENDENTE
+            // SALVAR USUARIO
             // =========================================
 
-            String codigo =
-                    String.format(
-                            "%06d",
-                            new SecureRandom().nextInt(1000000)
-                    );
-
-            String expiraEm =
-                    LocalDateTime.now()
-                            .plusHours(24)
-                            .format(
-                                    DateTimeFormatter.ofPattern(
-                                            "yyyy-MM-dd HH:mm:ss"
-                                    )
-                            );
-
             boolean salvo =
-                    dao.salvarCadastroPendente(
-                            usuario,
-                            codigo,
-                            expiraEm
-                    );
+                    dao.cadastrar(usuario);
 
             if (!salvo) {
 
                 System.out.println(
-                        "ERRO: cadastro pendente nao foi salvo."
+                        "ERRO: usuario nao foi salvo."
                 );
 
                 response.sendRedirect(
@@ -289,47 +265,18 @@ public class CadastroServlet extends HttpServlet {
                 return;
             }
 
-            // =========================================
-            // ENVIAR CODIGO POR EMAIL
-            // =========================================
-
-            EmailUtil.enviarCodigo(
-                    email,
-                    codigo
-            );
-
             System.out.println(
-                    "================================="
-            );
-
-            System.out.println(
-                    "CADASTRO PENDENTE CRIADO!"
-            );
-
-            System.out.println(
-                    "EMAIL: " + email
-            );
-
-            System.out.println(
-                    "USERNAME: " + username
-            );
-
-            System.out.println(
-                    "================================="
+                    "USUARIO CADASTRADO: " + username
             );
 
             // =========================================
-            // IR PARA VERIFICACAO DE EMAIL
+            // IR PARA LOGIN
             // =========================================
 
             response.sendRedirect(
-                    "VerificarEmail.html?email="
-                    + URLEncoder.encode(
-                            email,
-                            StandardCharsets.UTF_8.name()
-                    )
-                    + "&mensagem=codigo_enviado"
+                    "login.html?cadastro=sucesso"
             );
+
 
         } catch (Exception e) {
 
