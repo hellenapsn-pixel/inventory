@@ -15,6 +15,7 @@ import java.util.UUID;
 /**
  * Cria e atualiza a estrutura do banco do Inventory.
  * A inicialização é executada uma vez pelo listener da aplicação.
+ * O catálogo de jogos é carregado apenas sob demanda, via carregarCatalogoOpcional().
  */
 public final class CriarBanco {
 
@@ -33,7 +34,6 @@ public final class CriarBanco {
                 migrarBancoAntigo(stmt);
                 criarIndices(stmt);
                 migrarSenhas(conexao);
-                carregarCatalogo(conexao);
             }
 
             System.out.println("Banco do Inventory inicializado com sucesso.");
@@ -313,11 +313,33 @@ public final class CriarBanco {
         }
     }
 
-    private static void carregarCatalogo(Connection conexao) throws Exception {
-        if (catalogoJaCarregado(conexao)) {
-            return;
-        }
+    /**
+     * Carrega o catálogo de jogos a partir de jogos.csv sob demanda.
+     * Não é chamado automaticamente na inicialização da aplicação.
+     *
+     * @return true se o catálogo foi carregado agora, false se já estava carregado
+     */
+    public static boolean carregarCatalogoOpcional() throws Exception {
+        try (Connection conexao = Conexao.conectar()) {
+            if (conexao == null) {
+                throw new IllegalStateException("Não foi possível conectar ao SQLite.");
+            }
 
+            try (Statement stmt = conexao.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+                criarTabelas(stmt);
+            }
+
+            if (catalogoJaCarregado(conexao)) {
+                return false;
+            }
+
+            carregarCatalogo(conexao);
+            return true;
+        }
+    }
+
+    private static void carregarCatalogo(Connection conexao) throws Exception {
         String sql =
                 "INSERT INTO jogo " +
                 "(steam_app_id, titulo, descricao, genero, plataforma, capa) " +
