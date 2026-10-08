@@ -6,42 +6,42 @@ O projeto foi desenvolvido como TCC, utilizando uma arquitetura web em Java e se
 
 Funcionalidades
 
-- Cadastro e autenticação de usuários
-- Login com Google
-- Proteção de senhas com BCrypt
+ Cadastro e autenticação de usuários
+ Login com Google
+ Proteção de senhas com BCrypt
 
 
-- Biblioteca pessoal de jogos
-- Avaliação de jogos
-- Favoritar jogos
-- Listas de jogos
-- Perfil de usuário
-- Seguir outros usuários
+ Biblioteca pessoal de jogos
+ Avaliação de jogos
+ Favoritar jogos
+ Listas de jogos
+ Perfil de usuário
+ Seguir outros usuários
 
-- Busca e filtros de jogos
-- Exibição de capas e informações dos jogos
+ Busca e filtros de jogos
+ Exibição de capas e informações dos jogos
 
 
  Tecnologias utilizadas
 
 Backend
-- Java 
-- Java Servlets
-- Maven
-- DAO 
-- Model
-- SQLite
-- Gson
-- BCrypt
+ Java 
+ Java Servlets
+ Maven
+ DAO 
+ Model
+ SQLite
+ Gson
+ BCrypt
 
  Frontend
-- HTML
-- CSS
-- JavaScript
+ HTML
+ CSS
+ JavaScript
 
 Ambiente
-- Apache Tomcat 8.5
-- docker
+ Apache Tomcat 8.5
+ docker
 
 Arquitetura
 
@@ -49,11 +49,11 @@ O projeto utiliza uma arquitetura baseada na separação de responsabilidades:
 
 Interface → Servlet → DAO → SQLite
 
--Interface: apresenta as telas e recebe as ações do usuário.
-- Servlet: recebe as requisições do navegador, processa a lógica necessária e comunica-se com os DAOs.
-- Model: representa os objetos utilizados pelo sistema, como usuário e jogo.
-- DAO:concentra as operações de acesso ao banco de dados, como consultas, inserções, alterações e exclusões.
-- SQLite:armazena os dados da aplicação.
+Interface: apresenta as telas e recebe as ações do usuário.
+Servlet: recebe as requisições do navegador, processa a lógica necessária e comunica-se com os DAOs.
+  Model: representa os objetos utilizados pelo sistema, como usuário e jogo.
+  DAO:concentra as operações de acesso ao banco de dados, como consultas, inserções, alterações e exclusões.
+  SQLite:armazena os dados da aplicação.
 
 Banco de dados
 
@@ -61,13 +61,13 @@ O projeto utiliza SQLite, escolhido por armazenar os dados em arquivo, sem a nec
 
 Entre os dados trabalhados pelo sistema estão informações relacionadas a:
 
-- Usuários
-- Jogos
-- Biblioteca
-- Avaliações
-- Favoritos
-- Listas
-- Seguidores
+ Usuários
+ Jogos
+ Biblioteca
+ Avaliações
+ Favoritos
+ Listas
+ Seguidores
 
 
 
@@ -79,9 +79,9 @@ Pré-requisitos
 
 Instale:
 
-- Java 8
-- Maven
-- Apache Tomcat 8.5
+Java 8
+  Maven
+   Apache Tomcat 8.5
 
  Compilar
 
