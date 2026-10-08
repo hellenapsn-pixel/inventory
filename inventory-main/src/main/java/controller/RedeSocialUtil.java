@@ -235,7 +235,16 @@ public class RedeSocialUtil {
 
             if (foto.startsWith("http://") ||
                     foto.startsWith("https://")) {
-                url = foto;
+                try {
+                    url = contextPath +
+                            "/foto-perfil?url=" +
+                            URLEncoder.encode(
+                                    foto.trim(),
+                                    "UTF-8"
+                            );
+                } catch (Exception e) {
+                    url = foto;
+                }
             } else {
                 try {
                     url = contextPath +

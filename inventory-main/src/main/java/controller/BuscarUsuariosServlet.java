@@ -404,6 +404,18 @@ public class BuscarUsuariosServlet extends HttpServlet {
         html.append(".btn-seguir-busca:hover{background:#3a2050;color:#fff;border-color:#a855f7;}");
         html.append(".btn-seguir-busca.seguindo{background:#17251c;border-color:#2e6841;color:#a7f3c0;}");
 
+        html.append(".mini-rede{margin-top:14px;padding-top:12px;border-top:1px solid #2b1b35;text-align:left;}");
+        html.append(".mini-rede-contagem{display:flex;gap:16px;color:#8f8496;font-size:10px;margin-bottom:9px;}");
+        html.append(".mini-rede-contagem strong{color:#c084fc;font-size:13px;}");
+        html.append(".mini-rede-grupos{display:grid;grid-template-columns:1fr 1fr;gap:9px;}");
+        html.append(".mini-grupo{background:#110c16;border:1px solid #2b1b35;border-radius:9px;padding:7px;min-width:0;overflow:hidden;}");
+        html.append(".mini-grupo-titulo{display:block;color:#bca5c9;font-size:9px;margin-bottom:6px;font-weight:600;}");
+        html.append(".mini-fotos{display:flex;align-items:center;gap:2px;overflow:hidden;}");
+        html.append(".mini-fotos a{margin-right:-5px;flex:0 0 auto;}");
+        html.append(".mini-foto{width:25px;height:25px;min-width:25px;max-width:25px;max-height:25px;box-sizing:border-box;border-radius:50%;object-fit:cover;border:2px solid #110c16;background:#241633;display:flex;align-items:center;justify-content:center;color:#c084fc;font-size:9px;font-weight:700;margin:0;}");
+        html.append(".rede-sem-foto{display:flex;align-items:center;justify-content:center;background:#241633;color:#c084fc;font-weight:700;}");
+        html.append(".mini-sem{color:#5f5665;font-size:12px;}");
+
         html.append("</style>");
         html.append("</head>");
 
