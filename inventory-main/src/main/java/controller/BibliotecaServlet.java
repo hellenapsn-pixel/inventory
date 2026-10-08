@@ -872,16 +872,6 @@ public class BibliotecaServlet extends HttpServlet {
                 );
 
                 html.append("</form>");
-
-            } else {
-
-                html.append(
-                        "<a class='btn btn-secundario' href='avaliar?id=" +
-                        jogo.steamAppId +
-                        "'>" +
-                        "★ Ver avaliação" +
-                        "</a>"
-                );
             }
 
             html.append("</div>");

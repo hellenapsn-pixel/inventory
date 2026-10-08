@@ -122,11 +122,11 @@ public class AvaliacaoServlet extends HttpServlet {
             String titulo =
                     buscarNomeSteam(steamAppId);
 
+            // Mesma rota usada pela biblioteca: o servidor resolve a capa
+            // (arquivo local, URL do banco ou Steam) em vez do navegador.
             String capa =
-                    "https://cdn.cloudflare.steamstatic.com/" +
-                    "steam/apps/" +
-                    steamAppId +
-                    "/library_600x900.jpg";
+                    "capa?appId=" +
+                    steamAppId;
 
             response.setContentType(
                     "text/html;charset=UTF-8"
