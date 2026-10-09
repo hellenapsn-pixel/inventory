@@ -20,6 +20,33 @@ public class AdicionarBibliotecaServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
+    private int buscarSteamAppIdPorTitulo(
+            Connection conexao,
+            String titulo)
+            throws Exception {
+
+        String sql =
+                "SELECT steam_app_id " +
+                "FROM jogo " +
+                "WHERE titulo = ? COLLATE NOCASE " +
+                "LIMIT 1";
+
+        try (PreparedStatement ps =
+                     conexao.prepareStatement(sql)) {
+
+            ps.setString(1, titulo);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+                    return rs.getInt("steam_app_id");
+                }
+            }
+        }
+
+        return 0;
+    }
+
     @Override
     protected void doGet(
             HttpServletRequest request,
@@ -50,8 +77,16 @@ public class AdicionarBibliotecaServlet extends HttpServlet {
         String idTexto =
                 request.getParameter("id");
 
-        if (idTexto == null ||
-                idTexto.trim().isEmpty()) {
+        String tituloTexto =
+                request.getParameter("titulo");
+
+        boolean temTitulo =
+                tituloTexto != null &&
+                !tituloTexto.trim().isEmpty();
+
+        if (!temTitulo &&
+                (idTexto == null ||
+                idTexto.trim().isEmpty())) {
 
             response.sendRedirect(
                     request.getContextPath() + "/jogos"
@@ -68,8 +103,13 @@ public class AdicionarBibliotecaServlet extends HttpServlet {
 
         try {
 
-            int steamAppId =
-                    Integer.parseInt(idTexto);
+            int steamAppId = 0;
+
+            if (!temTitulo) {
+
+                steamAppId =
+                        Integer.parseInt(idTexto.trim());
+            }
 
             Usuario usuario =
                     (Usuario) sessao.getAttribute("usuario");
@@ -130,6 +170,33 @@ public class AdicionarBibliotecaServlet extends HttpServlet {
                 throw new Exception(
                         "Não foi possível conectar ao banco."
                 );
+            }
+
+            // ==========================================
+            // RESOLVER STEAM APP ID PELO TÍTULO
+            // ==========================================
+
+            if (temTitulo) {
+
+                steamAppId =
+                        buscarSteamAppIdPorTitulo(
+                                conexao,
+                                tituloTexto.trim()
+                        );
+
+                if (steamAppId <= 0) {
+
+                    System.out.println(
+                            "Jogo não encontrado pelo título: " +
+                            tituloTexto
+                    );
+
+                    response.sendRedirect(
+                            request.getContextPath() + "/jogos"
+                    );
+
+                    return;
+                }
             }
 
             // ==========================================
