@@ -797,7 +797,7 @@ public class PerfilUsuarioServlet extends HttpServlet {
                     ".lista-capas{display:flex;gap:8px;overflow:hidden;}"
             );
             html.append(
-                    ".lista-capas img{width:58px;height:82px;object-fit:cover;border-radius:7px;border:1px solid #33243f;background:#18111f;}"
+                    ".lista-capas img{width:58px;aspect-ratio:2/3;height:auto;object-fit:cover;border-radius:7px;border:1px solid #33243f;background:#18111f;}"
             );
             html.append(
                     ".lista-vazia{padding:18px;border:1px dashed #3a2945;border-radius:10px;color:#8f8496;font-size:12px;text-align:center;}"
