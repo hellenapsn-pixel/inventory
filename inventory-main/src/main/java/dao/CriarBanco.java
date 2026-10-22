@@ -30,6 +30,7 @@ public final class CriarBanco {
 
             try (Statement stmt = conexao.createStatement()) {
                 stmt.execute("PRAGMA foreign_keys = ON");
+                stmt.execute("DROP TABLE IF EXISTS cadastro_pendente");
                 criarTabelas(stmt);
                 migrarBancoAntigo(stmt);
                 criarIndices(stmt);
