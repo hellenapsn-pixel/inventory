@@ -125,7 +125,7 @@ public class VisualizarBancoServlet extends HttpServlet {
     private void renderTable(PrintWriter out, Connection connection, String table)
             throws Exception {
         String nomeSeguro = table.replace("\"", "\"\"");
-        String sql = "SELECT * FROM \"" + nomeSeguro + "\";
+        String sql = "SELECT * FROM \"" + nomeSeguro + "\";";
 
         out.println("<section class='panel'><h2>" + escapeHtml(table) + "</h2><div class='wrap'><table><thead><tr>");
         try (Statement statement = connection.createStatement();
