@@ -165,7 +165,11 @@ public class UsuarioServlet extends HttpServlet {
 
                 if (sistema.contains("win")) {
                     caminhoBase =
-                            "C:\\GameBoxdUploads\\data\\perfil";
+                            System.getProperty("user.home")
+                            + File.separator
+                            + "inventory-data"
+                            + File.separator
+                            + "perfil";
                 } else {
                     caminhoBase =
                             "/app/data/perfil";
