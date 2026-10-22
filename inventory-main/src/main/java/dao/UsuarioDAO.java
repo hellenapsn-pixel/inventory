@@ -19,9 +19,8 @@ public class UsuarioDAO {
 
         String sql =
                 "INSERT INTO usuario "
-                + "(nome, username, email, senha, foto, bio, "
-                + "data_nascimento, pais, plataforma_favorita) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "(nome, username, email, senha, foto, bio, pais) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         Connection conexao = null;
         PreparedStatement stmt = null;
@@ -80,17 +79,7 @@ public class UsuarioDAO {
 
             stmt.setString(
                     7,
-                    usuario.getDataNascimento()
-            );
-
-            stmt.setString(
-                    8,
                     usuario.getPais()
-            );
-
-            stmt.setString(
-                    9,
-                    usuario.getPlataformaFavorita()
             );
 
             int resultado =
@@ -887,20 +876,8 @@ public class UsuarioDAO {
                 resultado.getString("bio")
         );
 
-        usuario.setDataNascimento(
-                resultado.getString(
-                        "data_nascimento"
-                )
-        );
-
         usuario.setPais(
                 resultado.getString("pais")
-        );
-
-        usuario.setPlataformaFavorita(
-                resultado.getString(
-                        "plataforma_favorita"
-                )
         );
 
         return usuario;
