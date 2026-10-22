@@ -88,11 +88,6 @@ public class EditarPerfilServlet extends HttpServlet {
                             ? ""
                             : usuario.getPais();
 
-            String plataforma =
-                    usuario.getPlataformaFavorita() == null
-                            ? ""
-                            : usuario.getPlataformaFavorita();
-
             String foto =
                     usuario.getFoto() == null
                             ? ""
@@ -537,23 +532,6 @@ public class EditarPerfilServlet extends HttpServlet {
 
             html.append("</div>");
 
-            html.append("<div class='campo'>");
-
-            html.append("<label for='plataforma'>Plataforma favorita</label>");
-
-            html.append(
-                    "<input " +
-                    "type='text' " +
-                    "id='plataforma' " +
-                    "name='plataforma' " +
-                    "value='" +
-                    escaparHtml(plataforma) +
-                    "' " +
-                    "placeholder='PC, PlayStation, Xbox...'>"
-            );
-
-            html.append("</div>");
-
             html.append("<div class='botoes'>");
 
             html.append(
@@ -648,11 +626,6 @@ public class EditarPerfilServlet extends HttpServlet {
             String pais =
                     limpar(
                             request.getParameter("pais")
-                    );
-
-            String plataforma =
-                    limpar(
-                            request.getParameter("plataforma")
                     );
 
             String foto =
@@ -782,7 +755,6 @@ public class EditarPerfilServlet extends HttpServlet {
                     "username = ?, " +
                     "bio = ?, " +
                     "pais = ?, " +
-                    "plataforma_favorita = ?, " +
                     "foto = ? " +
                     "WHERE id = ?";
 
@@ -798,9 +770,8 @@ public class EditarPerfilServlet extends HttpServlet {
                 ps.setString(2, username);
                 ps.setString(3, bio);
                 ps.setString(4, pais);
-                ps.setString(5, plataforma);
-                ps.setString(6, foto);
-                ps.setInt(7, idUsuario);
+                ps.setString(5, foto);
+                ps.setInt(6, idUsuario);
 
                 ps.executeUpdate();
             }
@@ -813,7 +784,6 @@ public class EditarPerfilServlet extends HttpServlet {
             usuarioSessao.setUsername(username);
             usuarioSessao.setBio(bio);
             usuarioSessao.setPais(pais);
-            usuarioSessao.setPlataformaFavorita(plataforma);
             usuarioSessao.setFoto(foto);
 
             sessao.setAttribute(
