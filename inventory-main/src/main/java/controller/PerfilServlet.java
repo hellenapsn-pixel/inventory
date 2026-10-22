@@ -705,6 +705,14 @@ public class PerfilServlet extends HttpServlet {
         html.append("@media(max-width:700px){.lista-jogos-perfil{grid-template-columns:repeat(3,1fr);}.lista-jogo-capa,.lista-jogo-sem-capa{height:160px;}}");
         html.append("@media(max-width:500px){.lista-jogos-perfil{grid-template-columns:repeat(2,1fr);}.lista-jogo-capa,.lista-jogo-sem-capa{height:190px;}}");
 
+                // Mantém as capas proporcionais e evita que avaliações com textos longos deformem a grade.
+        html.append(".grade{align-items:start;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));}");
+        html.append(".jogo{min-width:0;align-self:start;}");
+        html.append(".capa{height:235px;overflow:hidden;background:#09090b;}");
+        html.append(".capa img{width:100%;height:100%;object-fit:contain;background:#09090b;}");
+        html.append(".comentario{overflow-wrap:anywhere;word-break:normal;}");
+        html.append("@media(max-width:500px){.grade{grid-template-columns:repeat(2,minmax(0,1fr));}.capa{height:205px;}}");
+
         html.append("</style>");
 
         html.append("</head>");
