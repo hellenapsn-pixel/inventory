@@ -634,19 +634,10 @@ public class GoogleCallbackServlet extends HttpServlet {
                                 rs.getString("bio")
                         );
 
-                        usuario.setDataNascimento(
-                                rs.getString("data_nascimento")
-                        );
-
                         usuario.setPais(
                                 rs.getString("pais")
                         );
 
-                        usuario.setPlataformaFavorita(
-                                rs.getString(
-                                        "plataforma_favorita"
-                                )
-                        );
                     }
 
                     return usuario;
