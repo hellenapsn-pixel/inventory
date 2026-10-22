@@ -54,9 +54,7 @@ public final class CriarBanco {
                 "senha TEXT NOT NULL," +
                 "foto TEXT," +
                 "bio TEXT," +
-                "data_nascimento TEXT," +
-                "pais TEXT," +
-                "plataforma_favorita TEXT" +
+                "pais TEXT" +
                 ")"
         );
 stmt.execute(
@@ -154,6 +152,14 @@ stmt.execute(
 
     private static void migrarBancoAntigo(Statement stmt) throws Exception {
         garantirColuna(stmt, "usuario", "username", "TEXT");
+
+        // Remove as colunas antigas que não fazem mais parte do cadastro.
+        if (temColuna(stmt, "usuario", "data_nascimento")) {
+            stmt.executeUpdate("ALTER TABLE usuario DROP COLUMN data_nascimento");
+        }
+        if (temColuna(stmt, "usuario", "plataforma_favorita")) {
+            stmt.executeUpdate("ALTER TABLE usuario DROP COLUMN plataforma_favorita");
+        }
         garantirColuna(stmt, "jogo", "steam_app_id", "INTEGER");
         garantirColuna(stmt, "biblioteca", "steam_app_id", "INTEGER");
         garantirColuna(stmt, "avaliacao", "steam_app_id", "INTEGER");
