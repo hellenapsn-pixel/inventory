@@ -9,9 +9,7 @@ public class Usuario {
     private String senha;
     private String foto;
     private String bio;
-    private String dataNascimento;
     private String pais;
-    private String plataformaFavorita;
 
     public Usuario() {
     }
@@ -72,14 +70,6 @@ public class Usuario {
         this.bio = bio;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
     public String getPais() {
         return pais;
     }
@@ -88,11 +78,4 @@ public class Usuario {
         this.pais = pais;
     }
 
-    public String getPlataformaFavorita() {
-        return plataformaFavorita;
-    }
-
-    public void setPlataformaFavorita(String plataformaFavorita) {
-        this.plataformaFavorita = plataformaFavorita;
-    }
 }
