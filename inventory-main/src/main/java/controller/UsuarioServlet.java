@@ -45,12 +45,8 @@ public class UsuarioServlet extends HttpServlet {
         String email = limpar(request.getParameter("email")).toLowerCase();
         String senha = request.getParameter("senha");
 
-        String dataNascimento =
-                limpar(request.getParameter("dataNascimento"));
         String pais =
                 limpar(request.getParameter("pais"));
-        String plataforma =
-                limpar(request.getParameter("plataforma"));
         String bio =
                 limpar(request.getParameter("bio"));
 
@@ -207,9 +203,7 @@ public class UsuarioServlet extends HttpServlet {
 
         usuario.setFoto(nomeFoto);
         usuario.setBio(bio);
-        usuario.setDataNascimento(dataNascimento);
         usuario.setPais(pais);
-        usuario.setPlataformaFavorita(plataforma);
 
         boolean salvo =
                 usuarioDAO.cadastrar(usuario);
