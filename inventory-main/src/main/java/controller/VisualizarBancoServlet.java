@@ -28,8 +28,6 @@ import javax.servlet.http.HttpSession;
 public class VisualizarBancoServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final int LIMITE_REGISTROS = 200;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -80,8 +78,7 @@ public class VisualizarBancoServlet extends HttpServlet {
             out.println("th,td{border:1px solid #ddd;padding:8px;text-align:left;vertical-align:top;overflow-wrap:anywhere;max-width:300px}");
             out.println("th{background:#edf0f4;position:sticky;top:0}.count{font-size:.85rem;color:#555}");
             out.println("</style></head><body><header><h1>Inventory — banco SQLite</h1>");
-            out.println("<p class='note'>Somente leitura. Até " + LIMITE_REGISTROS
-                    + " registros por tabela. Campos de senha, token e segredo são ocultados.</p>");
+            out.println("<p class='note'>Somente leitura. Campos de senha, token e segredo são ocultados.</p>");
             out.println("<p class='note'>Conta autorizada: " + escapeHtml(email) + "</p>");
             out.println("<p><a href='" + escapeHtml(request.getContextPath())
                     + "/admin/banco'>Atualizar dados</a></p></header>");
@@ -128,7 +125,7 @@ public class VisualizarBancoServlet extends HttpServlet {
     private void renderTable(PrintWriter out, Connection connection, String table)
             throws Exception {
         String nomeSeguro = table.replace("\"", "\"\"");
-        String sql = "SELECT * FROM \"" + nomeSeguro + "\" LIMIT " + LIMITE_REGISTROS;
+        String sql = "SELECT * FROM \"" + nomeSeguro + "\";
 
         out.println("<section class='panel'><h2>" + escapeHtml(table) + "</h2><div class='wrap'><table><thead><tr>");
         try (Statement statement = connection.createStatement();
@@ -161,7 +158,6 @@ public class VisualizarBancoServlet extends HttpServlet {
             }
             out.println("</tbody></table></div><p class='count'>" + quantidade
                     + " registro(s) exibido(s)"
-                    + (quantidade == LIMITE_REGISTROS ? " (limite atingido)" : "")
                     + ".</p></section>");
         }
     }
