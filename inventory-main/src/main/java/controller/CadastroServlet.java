@@ -61,9 +61,6 @@ public class CadastroServlet extends HttpServlet {
             String pais =
                     valor(request, "pais");
 
-            String plataforma =
-                    valor(request, "plataforma");
-
             String bio =
                     valor(request, "bio");
 
@@ -237,13 +234,7 @@ public class CadastroServlet extends HttpServlet {
 
             usuario.setBio(bio);
 
-            usuario.setDataNascimento("");
-
             usuario.setPais(pais);
-
-            usuario.setPlataformaFavorita(
-                    plataforma
-            );
 
             // =========================================
             // SALVAR USUARIO
