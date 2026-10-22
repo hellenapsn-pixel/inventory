@@ -853,6 +853,14 @@ public class PerfilUsuarioServlet extends HttpServlet {
         html.append(".mini-sem{color:#5f5665;font-size:12px;}");
         html.append("@media(max-width:700px){.rede-grid{grid-template-columns:1fr;}.mini-rede-grupos{grid-template-columns:1fr 1fr;}}");
 
+                // Mantém as avaliações alinhadas e impede que as capas estiquem com o texto.
+        html.append(".avaliacoes-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));align-items:start;}");
+        html.append(".avaliacao{align-items:stretch;min-width:0;}");
+        html.append(".avaliacao-capa{width:110px;min-width:110px;height:165px;flex:0 0 110px;align-self:flex-start;overflow:hidden;}");
+        html.append(".avaliacao-capa img{width:100%;height:100%;object-fit:contain;background:#09090b;}");
+        html.append(".avaliacao-info{flex:1;overflow-wrap:anywhere;}");
+        html.append("@media(max-width:420px){.avaliacao-capa{width:88px;min-width:88px;height:132px;flex-basis:88px;}.avaliacao-info{padding:12px;}}");
+
         html.append("</style>");
 
             html.append("</head>");
