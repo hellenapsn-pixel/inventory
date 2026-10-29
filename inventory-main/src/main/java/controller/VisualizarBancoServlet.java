@@ -97,7 +97,7 @@ public class VisualizarBancoServlet extends HttpServlet {
             out.println("th,td{border:1px solid #ddd;padding:8px;text-align:left;vertical-align:top;overflow-wrap:anywhere;max-width:300px}");
             out.println("th{background:#edf0f4;position:sticky;top:0}.count{font-size:.85rem;color:#555}");
             out.println("</style></head><body><header><h1>Inventory — banco SQLite</h1>");
-            out.println("<p class='note'>Somente leitura. Campos de senha, token e segredo são ocultados.</p>");
+            out.println("<p class='note'>Somente leitura. Senhas criptografadas são exibidas apenas na tabela usuario; tokens e segredos continuam ocultos.</p>");
             out.println("<p class='note'>Conta autorizada: " + escapeHtml(email) + "</p>");
             out.println("<p><a href='" + escapeHtml(request.getContextPath())
                     + "/admin/banco'>Atualizar dados</a></p></header>");
@@ -193,7 +193,9 @@ public class VisualizarBancoServlet extends HttpServlet {
             List<Integer> colunasVisiveis = new ArrayList<Integer>();
             for (int i = 1; i <= meta.getColumnCount(); i++) {
                 String coluna = meta.getColumnLabel(i).toLowerCase(Locale.ROOT);
-                if (coluna.contains("senha") || coluna.contains("password")
+                boolean tabelaUsuario = "usuario".equalsIgnoreCase(table);
+                boolean colunaSenha = coluna.contains("senha") || coluna.contains("password");
+                if ((colunaSenha && !tabelaUsuario)
                         || coluna.contains("token") || coluna.contains("secret")) {
                     continue;
                 }
