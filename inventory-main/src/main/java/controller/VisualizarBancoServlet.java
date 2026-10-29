@@ -37,7 +37,7 @@ public class VisualizarBancoServlet extends HttpServlet {
         response.setHeader("X-Content-Type-Options", "nosniff");
         response.setHeader("X-Frame-Options", "DENY");
         response.setHeader("Content-Security-Policy",
-                "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
+                "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'");
 
         HttpSession session = request.getSession(false);
         if (session == null || !(session.getAttribute("usuario") instanceof Usuario)) {
@@ -56,25 +56,6 @@ public class VisualizarBancoServlet extends HttpServlet {
         }
         if (!emailPermitido(email, allowlist)) {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, "Acesso não autorizado.");
-            return;
-        }
-
-        if (!Boolean.TRUE.equals(session.getAttribute("adminBancoAutenticado"))) {
-            try (PrintWriter out = response.getWriter()) {
-                out.println("<!doctype html><html lang='pt-BR'><head><meta charset='UTF-8'>");
-                out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
-                out.println("<title>Confirmar senha — Inventory</title><style>");
-                out.println("body{font-family:system-ui,Arial;background:#f3f4f6;color:#202124;margin:0;padding:20px}");
-                out.println("main{max-width:420px;margin:8vh auto;background:white;padding:22px;border:1px solid #ddd;border-radius:14px}");
-                out.println("input,button{box-sizing:border-box;width:100%;padding:12px;margin-top:10px;font:inherit;border-radius:8px}");
-                out.println("input{border:1px solid #aaa}button{border:0;background:#202124;color:white;font-weight:600}");
-                out.println("</style></head><body><main><h1>Confirmar senha</h1>");
-                out.println("<p>Digite a senha administrativa para visualizar o banco SQLite.</p>");
-                out.println("<form method='post' action='" + escapeHtml(request.getContextPath()) + "/admin/banco'>");
-                out.println("<label for='senha'>Senha administrativa</label>");
-                out.println("<input id='senha' name='senha' type='password' autocomplete='current-password' required>");
-                out.println("<button type='submit'>Acessar banco</button></form></main></body></html>");
-            }
             return;
         }
 
@@ -126,46 +107,6 @@ public class VisualizarBancoServlet extends HttpServlet {
                         "Não foi possível carregar as tabelas. Consulte os logs do servidor.");
             }
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
-
-        HttpSession session = request.getSession(false);
-        if (session == null || !(session.getAttribute("usuario") instanceof Usuario)) {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Faça login para continuar.");
-            return;
-        }
-
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        String allowlist = System.getenv("INVENTORY_ADMIN_EMAILS");
-        if (allowlist == null || allowlist.trim().isEmpty()
-                || !emailPermitido(usuario.getEmail(), allowlist)) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Acesso não autorizado.");
-            return;
-        }
-
-        String senhaConfigurada = System.getenv("INVENTORY_ADMIN_PASSWORD");
-        String senhaInformada = request.getParameter("senha");
-        if (senhaConfigurada == null || senhaConfigurada.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN,
-                    "A senha administrativa ainda não foi configurada no servidor.");
-            return;
-        }
-        if (senhaInformada == null || !java.security.MessageDigest.isEqual(
-                senhaConfigurada.getBytes(java.nio.charset.StandardCharsets.UTF_8),
-                senhaInformada.getBytes(java.nio.charset.StandardCharsets.UTF_8))) {
-            response.setContentType("text/plain; charset=UTF-8");
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().println("Senha incorreta. Volte à página e tente novamente.");
-            return;
-        }
-
-        session.setAttribute("adminBancoAutenticado", Boolean.TRUE);
-        response.sendRedirect(request.getContextPath() + "/admin/banco");
     }
 
     private boolean emailPermitido(String email, String allowlist) {
