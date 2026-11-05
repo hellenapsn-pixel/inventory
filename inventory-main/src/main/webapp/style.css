@@ -1812,3 +1812,273 @@ footer {
   .catalogo-jogos { gap: 9px; }
   nav a { padding: 7px 6px; font-size: .66rem; }
 }
+
+
+/* =========================================================
+   INVENTORY — NOVA DIREÇÃO VISUAL
+   Catálogo editorial: capas em destaque, layout mais limpo,
+   roxo usado como acento e não como brilho em toda a tela.
+   ========================================================= */
+:root {
+  --inv-bg: #09070d;
+  --inv-panel: #121019;
+  --inv-panel-2: #191522;
+  --inv-line: rgba(190, 160, 225, .17);
+  --inv-purple: #8b5cf6;
+  --inv-lilac: #c4a3f5;
+  --inv-white: #f7f4fb;
+  --inv-muted: #a69caf;
+}
+html, body {
+  background: var(--inv-bg);
+  color: var(--inv-white);
+  font-family: 'DM Sans', sans-serif;
+}
+body {
+  background-image: linear-gradient(180deg, #100b18 0, #09070d 430px);
+  letter-spacing: 0;
+}
+h1,h2,h3,h4 { font-family:'Space Grotesk',sans-serif; letter-spacing:-.045em; }
+header {
+  min-height:68px;
+  padding:10px clamp(18px,5vw,76px);
+  background:#0b0910;
+  border-bottom:1px solid var(--inv-line);
+  box-shadow:none;
+}
+.logo-area { gap:11px; }
+.logo-header { width:34px; height:34px; }
+.logo-area h1, header h1 {
+  color:#fff;
+  font-size:1.38rem;
+  letter-spacing:-.07em;
+}
+nav { gap:3px; }
+nav a {
+  padding:9px 12px;
+  border-radius:5px;
+  color:#aaa1b4;
+  font-family:'DM Sans',sans-serif;
+  font-size:.79rem;
+  font-weight:600;
+}
+nav a:hover, nav a:focus-visible {
+  color:#fff;
+  background:#21172e;
+  border-color:transparent;
+  transform:none;
+}
+main {
+  max-width:1360px;
+  padding:0 clamp(16px,4.5vw,64px) 55px;
+}
+.inicio {
+  position:relative;
+  min-height:285px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  text-align:left;
+  margin:34px 0 24px;
+  padding:clamp(32px,6vw,68px);
+  overflow:hidden;
+  border:1px solid var(--inv-line);
+  border-left:4px solid var(--inv-purple);
+  border-radius:8px;
+  background:
+    linear-gradient(90deg,rgba(12,9,17,.98) 0%,rgba(25,16,37,.93) 58%,rgba(45,26,67,.7) 100%);
+  box-shadow:none;
+}
+.inicio::before {
+  content:"SUA COLEÇÃO. SUA HISTÓRIA.";
+  display:block;
+  margin:0 0 18px;
+  color:var(--inv-lilac);
+  font:700 .68rem 'DM Sans',sans-serif;
+  letter-spacing:.2em;
+}
+.inicio::after {
+  content:"INVENTORY";
+  position:absolute;
+  right:-.03em;
+  bottom:-.22em;
+  color:rgba(196,163,245,.055);
+  font:700 clamp(5rem,16vw,13rem) 'Space Grotesk',sans-serif;
+  letter-spacing:-.09em;
+  pointer-events:none;
+}
+.inicio h2 {
+  position:relative;
+  z-index:1;
+  max-width:720px;
+  margin:0 0 14px;
+  font-size:clamp(2.3rem,5.4vw,4.6rem);
+  line-height:1.02;
+  letter-spacing:-.075em;
+}
+.inicio h2 span { color:var(--inv-lilac); }
+.inicio p {
+  position:relative;
+  z-index:1;
+  max-width:540px;
+  margin:0;
+  color:#c0b7c9;
+  font-size:1rem;
+}
+.busca {
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin:0 0 48px;
+  padding:18px 20px;
+  border:1px solid var(--inv-line);
+  border-radius:7px;
+  background:#100d16;
+}
+.busca h2 { flex:0 0 auto; margin:0; font-size:1rem; }
+.busca-form { display:flex; flex:1; gap:9px; }
+.busca-form input {
+  min-width:0;
+  height:46px;
+  border:1px solid #393044;
+  border-radius:5px;
+  background:#09070d;
+}
+.busca-form input:focus { border-color:var(--inv-purple); box-shadow:0 0 0 3px rgba(139,92,246,.12); }
+button,.btn,.botao,.botao-postar,input[type="submit"],input[type="button"],.botao-biblioteca {
+  border:1px solid rgba(196,163,245,.24);
+  border-radius:5px;
+  background:#7042b5;
+  color:#fff;
+  box-shadow:none;
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;
+  letter-spacing:0;
+}
+button:hover,.btn:hover,.botao:hover,.botao-postar:hover,input[type="submit"]:hover,.botao-biblioteca:hover {
+  background:#8958cf;
+  box-shadow:0 5px 18px rgba(112,66,181,.2);
+  transform:translateY(-1px);
+}
+.titulo-catalogo {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  margin:0 0 20px;
+  padding:0 0 14px;
+  border-bottom:1px solid var(--inv-line);
+}
+.titulo-catalogo h2 { margin:0 0 4px; font-size:1.55rem; }
+.titulo-catalogo h2::before { content:none; }
+.titulo-catalogo p { color:var(--inv-muted); font-size:.83rem; }
+.catalogo-jogos {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:18px;
+}
+.card-jogo {
+  min-width:0;
+  overflow:hidden;
+  border:1px solid #282130;
+  border-radius:6px;
+  background:#100d16;
+  text-align:left;
+  box-shadow:none;
+  transition:border-color .2s, transform .2s;
+}
+.card-jogo:hover {
+  transform:translateY(-4px);
+  border-color:#8056b5;
+  box-shadow:0 12px 28px rgba(0,0,0,.28);
+}
+.card-jogo img {
+  display:block;
+  width:100%;
+  height:clamp(190px,22vw,285px);
+  object-fit:cover;
+  filter:saturate(.88);
+  transition:filter .25s, transform .35s;
+}
+.card-jogo:hover img { filter:saturate(1.08); transform:scale(1.025); }
+.card-jogo-conteudo { padding:14px 13px 15px; }
+.card-jogo h3 {
+  min-height:2.5em;
+  margin:0 0 6px;
+  justify-content:flex-start;
+  text-align:left;
+  font-size:.94rem;
+  line-height:1.25;
+}
+.card-jogo .genero { margin:0 0 8px; color:var(--inv-muted); font-size:.75rem; }
+.card-jogo .nota { margin:0 0 10px; color:#d0b5f5!important; font-size:.8rem; }
+.botao-biblioteca {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:38px;
+  margin-top:10px;
+  padding:9px 8px;
+  font-size:.72rem;
+  text-decoration:none;
+}
+.card,.jogo-card,.game-card,.biblioteca-card,.avaliacao-card,
+.perfil-box,.form-container,.login-box,.editar-box {
+  border:1px solid var(--inv-line);
+  border-radius:8px;
+  background:#13101a;
+  box-shadow:0 8px 24px rgba(0,0,0,.16);
+}
+input,textarea,select {
+  border:1px solid #393044;
+  border-radius:5px;
+  background:#0b0910;
+  font-family:'DM Sans',sans-serif;
+}
+.status,.badge {
+  border-radius:4px;
+  background:rgba(139,92,246,.13);
+  border:1px solid rgba(196,163,245,.23);
+  color:#d7c1f5;
+}
+.login-box,.editar-box,.perfil-box { border-radius:9px; }
+footer {
+  margin-top:35px;
+  padding:25px 16px;
+  border-top:1px solid var(--inv-line);
+  background:#08060b;
+}
+@media(max-width:1050px) {
+  .catalogo-jogos { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@media(max-width:800px) {
+  header { flex-direction:column; gap:10px; }
+  nav { flex-wrap:wrap; justify-content:center; }
+  .catalogo-jogos { grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+  .busca { align-items:stretch; flex-direction:column; gap:12px; }
+}
+@media(max-width:600px) {
+  main { padding:0 13px 38px; }
+  header { padding:13px 10px; }
+  nav a { padding:8px 8px; font-size:.7rem; }
+  .inicio { min-height:225px; margin:20px 0; padding:32px 22px; }
+  .inicio h2 { font-size:clamp(2.05rem,10vw,3.1rem); }
+  .inicio p { font-size:.88rem; }
+  .inicio::after { font-size:5rem; }
+  .busca { padding:15px; margin-bottom:34px; }
+  .busca-form { flex-direction:column; }
+  .busca-form button { width:100%; min-height:43px; }
+  .titulo-catalogo { align-items:flex-start; flex-direction:column; }
+  .catalogo-jogos { grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px; }
+  .card-jogo img { height:clamp(165px,56vw,225px); }
+  .card-jogo-conteudo { padding:11px; }
+  .card-jogo h3 { font-size:.85rem; }
+  .botao-biblioteca { font-size:.65rem; }
+}
+@media(max-width:360px) {
+  .catalogo-jogos { gap:8px; }
+  .card-jogo img { height:165px; }
+  nav a { font-size:.64rem; padding:7px 6px; }
+}
