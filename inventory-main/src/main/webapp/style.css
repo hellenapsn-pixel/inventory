@@ -1111,3 +1111,194 @@ footer {
     }
 }
 
+
+
+/* =========================================================
+   INVENTORY — REFINAMENTO VISUAL / EDIÇÃO PREMIUM
+   Mantém a identidade roxo + preto, com linguagem editorial.
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --roxo: #7c3aed;
+  --roxo-claro: #a855f7;
+  --roxo-hover: #9333ea;
+  --roxo-escuro: #4c1d95;
+  --fundo: #0b0910;
+  --fundo-secundario: #120e18;
+  --card: #17131d;
+  --card-hover: #211a2b;
+  --borda: rgba(192, 132, 252, .16);
+  --texto: #f5f3f7;
+  --texto-secundario: #aaa1b4;
+  --branco: #fff;
+  --surface-glass: rgba(20, 15, 27, .82);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: -.01em;
+  background:
+    radial-gradient(ellipse at 12% -10%, rgba(124,58,237,.19), transparent 36rem),
+    radial-gradient(ellipse at 92% 18%, rgba(168,85,247,.08), transparent 30rem),
+    var(--fundo);
+  color: var(--texto);
+}
+h1,h2,h3,h4,button,nav a {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -.035em;
+}
+p { line-height: 1.72; }
+a { text-underline-offset: 4px; }
+
+header {
+  min-height: 76px;
+  padding: 0 clamp(18px, 5vw, 72px);
+  background: rgba(11,9,16,.84);
+  border-bottom: 1px solid rgba(192,132,252,.13);
+  box-shadow: 0 12px 38px rgba(0,0,0,.16);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+header h1 { font-size: 1.45rem; letter-spacing: -.06em; }
+nav { gap: 6px; }
+nav a {
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #b8adbf;
+  font-size: .82rem;
+  font-weight: 600;
+  transition: color .2s ease, background .2s ease, border-color .2s ease;
+}
+nav a:hover, nav a:focus-visible {
+  color: #fff;
+  background: rgba(124,58,237,.13);
+  border-color: rgba(168,85,247,.24);
+  transform: none;
+}
+
+.container,.conteudo,.page-container,.biblioteca-container,.perfil-container {
+  max-width: 1320px;
+  padding-left: clamp(16px, 3vw, 34px);
+  padding-right: clamp(16px, 3vw, 34px);
+}
+.card,.jogo-card,.game-card,.biblioteca-card,.avaliacao-card,
+.perfil-box,.form-container,.login-box,.editar-box {
+  background: linear-gradient(155deg, rgba(34,26,45,.96), rgba(18,14,24,.98));
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  box-shadow: 0 16px 42px rgba(0,0,0,.22);
+}
+.card:hover,.jogo-card:hover,.game-card:hover,.biblioteca-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168,85,247,.48);
+  box-shadow: 0 22px 48px rgba(0,0,0,.32), 0 0 34px rgba(124,58,237,.10);
+}
+.jogo-card img,.game-card img,.biblioteca-card img {
+  height: 285px;
+  transition: transform .55s cubic-bezier(.2,.7,.2,1), filter .4s ease;
+  filter: saturate(.88);
+}
+.jogo-card:hover img,.game-card:hover img,.biblioteca-card:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.08);
+}
+.jogo-card-content,.game-card-content,.biblioteca-card-content { padding: 18px; }
+.jogo-card h3,.game-card h3,.biblioteca-card h3 {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+button,.btn,.botao,.botao-postar,input[type="submit"],input[type="button"] {
+  border-radius: 999px;
+  background: linear-gradient(120deg, #6d28d9, #9333ea);
+  padding: 12px 21px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  box-shadow: 0 8px 22px rgba(124,58,237,.16);
+}
+button:hover,.btn:hover,.botao:hover,.botao-postar:hover,
+input[type="submit"]:hover,input[type="button"]:hover {
+  background: linear-gradient(120deg, #7c3aed, #a855f7);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(124,58,237,.25);
+}
+.btn-secundario,.botao-secundario {
+  border-radius: 999px;
+  background: rgba(34,26,45,.8);
+  border: 1px solid var(--borda);
+}
+input,textarea,select {
+  background: rgba(10,8,14,.76);
+  border: 1px solid rgba(192,132,252,.18);
+  border-radius: 12px;
+  padding: 13px 15px;
+  font-family: 'DM Sans',sans-serif;
+}
+input:focus,textarea:focus,select:focus {
+  border-color: rgba(168,85,247,.72);
+  box-shadow: 0 0 0 4px rgba(124,58,237,.12);
+}
+.status,.badge {
+  border-radius: 999px;
+  padding: 6px 11px;
+  background: rgba(124,58,237,.13);
+  border-color: rgba(168,85,247,.25);
+  color: #d8b4fe;
+  letter-spacing: .02em;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(192,132,252,.18);
+  background:
+    linear-gradient(115deg, rgba(18,13,27,.96), rgba(35,19,54,.78)),
+    radial-gradient(circle at 82% 10%, rgba(168,85,247,.28), transparent 24rem);
+  box-shadow: 0 28px 70px rgba(0,0,0,.32);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -90px;
+  top: -130px;
+  border: 1px solid rgba(216,180,254,.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(168,85,247,.025), 0 0 0 58px rgba(168,85,247,.02);
+  pointer-events: none;
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -.065em; }
+.login-container { padding: 34px 18px; }
+.login-box,.editar-box { border-radius: 22px; }
+.perfil-box { border-radius: 22px; }
+.foto-perfil img,.preview-foto img { border: 2px solid rgba(168,85,247,.8); }
+.dados-perfil p {
+  background: rgba(10,8,14,.48);
+  border: 1px solid rgba(192,132,252,.13);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.avaliacao-card { border-left: 2px solid rgba(168,85,247,.8); }
+footer {
+  background: rgba(8,7,11,.78);
+  border-top: 1px solid rgba(192,132,252,.13);
+  letter-spacing: .02em;
+}
+::-webkit-scrollbar-thumb { background: linear-gradient(#6d28d9,#a855f7); }
+:focus-visible { outline: 2px solid #c084fc; outline-offset: 3px; }
+
+@media (max-width: 800px) {
+  header { padding: 14px 18px; gap: 12px; }
+  nav { gap: 3px; }
+  nav a { padding: 8px 11px; }
+  .jogo-card img,.game-card img,.biblioteca-card img { height: 230px; }
+}
+@media (max-width: 500px) {
+  .jogo-card img,.game-card img,.biblioteca-card img { height: 205px; }
+  .hero { margin: 24px 12px; padding: 36px 20px; }
+  .login-box,.editar-box,.perfil-box { padding: 22px; }
+}
