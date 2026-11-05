@@ -126,11 +126,24 @@ bash
 docker run -p 8080:8080 inventory
 
 
-Depois, acesse:
-
-
+Depois, acesse a versão local:
 
 http://localhost:8080
+
+## Versão publicada
+
+Acesse a versão online do Inventory pelo endereço utilizado na demonstração:
+
+https://inventory-production-786f.up.railway.app
+
+## Configurações externas
+
+O login com Google depende da configuração das seguintes variáveis de ambiente:
+
+- `GOOGLE_CLIENT_ID`: identificador do cliente OAuth do Google.
+- `GOOGLE_CLIENT_SECRET`: chave secreta do cliente OAuth do Google.
+
+Configure essas variáveis no ambiente de hospedagem ou no ambiente local antes de utilizar o login com Google. Por segurança, não coloque os valores dessas credenciais no README, no código-fonte ou em repositórios públicos.
 
 
 
