@@ -570,6 +570,7 @@ public class BibliotecaServlet extends HttpServlet {
         html.append("header nav a:hover{color:#c084fc !important;}");
         html.append("@media(max-width:850px){header{padding:14px 20px !important;flex-wrap:wrap;gap:12px;}header nav{gap:15px !important;flex-wrap:wrap;}header nav a{font-size:13px !important;}}");
         html.append("</style>");
+        html.append("<link rel='stylesheet' href='").append(request.getContextPath()).append("/style.css'>");
 
         html.append("</head>");
 
