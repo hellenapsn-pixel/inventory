@@ -2294,3 +2294,363 @@ footer {
   .inicio h2 { font-size:clamp(2.25rem,10vw,3.4rem); }
   .card-jogo { border-radius:6px; }
 }
+
+
+/* ==========================================================
+   INVENTORY — NEON NOIR / PREMIUM GAMING CLUB
+   Direção visual nova: interface de launcher AAA,
+   atmosfera noturna, tipografia editorial e acentos violeta.
+   ========================================================== */
+:root {
+  --inv-bg:#08070d;
+  --inv-panel:#100e18;
+  --inv-panel-raised:#171321;
+  --inv-line:rgba(184,154,235,.19);
+  --inv-purple:#9b6cf4;
+  --inv-lilac:#d4bdff;
+  --inv-text:#f5f1fb;
+  --inv-muted:#a69caf;
+  --inv-gold:#d5bd91;
+}
+html,body {
+  background:#08070d;
+  color:var(--inv-text);
+}
+body {
+  background:
+    radial-gradient(ellipse at 78% 0%,rgba(106,67,163,.16),transparent 34rem),
+    linear-gradient(180deg,#0d0a13 0%,#08070d 52%,#0b0910 100%);
+  font-family:'DM Sans',sans-serif;
+}
+header {
+  min-height:76px;
+  padding:12px clamp(18px,5vw,78px);
+  background:rgba(8,7,13,.91);
+  border-bottom:1px solid rgba(190,164,235,.18);
+  box-shadow:0 12px 34px rgba(0,0,0,.28);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+header::after {
+  content:"";
+  position:absolute;
+  left:5%;right:5%;bottom:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(183,139,255,.65),transparent);
+}
+.logo-area { gap:12px; }
+.logo-header {
+  width:39px;height:39px;
+  filter:drop-shadow(0 0 13px rgba(155,108,244,.4));
+}
+.logo-area h1,header h1 {
+  color:#fff;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1.55rem;
+  font-weight:700;
+  letter-spacing:-.075em;
+}
+nav { gap:5px; }
+nav a {
+  padding:10px 13px;
+  border:1px solid transparent;
+  border-radius:7px;
+  color:#b8afc4;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  transition:all .2s ease;
+}
+nav a::after { display:none; }
+nav a:hover,nav a:focus-visible {
+  color:#fff;
+  background:linear-gradient(135deg,rgba(119,75,183,.22),rgba(57,39,81,.18));
+  border-color:rgba(191,158,244,.25);
+  box-shadow:inset 0 1px rgba(255,255,255,.05);
+  transform:translateY(-1px);
+}
+main {
+  max-width:1480px;
+  padding:0 clamp(17px,5vw,76px) 70px;
+}
+.inicio {
+  position:relative;
+  isolation:isolate;
+  min-height:365px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  margin:34px 0 28px;
+  padding:clamp(35px,7vw,88px);
+  overflow:hidden;
+  text-align:left;
+  border:1px solid rgba(188,153,244,.25);
+  border-radius:13px;
+  border-left:3px solid #a879fa;
+  background:
+    linear-gradient(100deg,rgba(9,7,14,.98) 0%,rgba(18,12,29,.95) 52%,rgba(39,24,60,.72) 100%),
+    radial-gradient(circle at 82% 46%,rgba(139,89,218,.25),transparent 26rem);
+  box-shadow:0 28px 75px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.055);
+}
+.inicio::before {
+  content:"INVENTORY  /  GAME LIBRARY  /  PLAYER PROFILE";
+  display:block;
+  margin:0 0 24px;
+  color:#c7a9f2;
+  font:700 .65rem 'DM Sans',sans-serif;
+  letter-spacing:.22em;
+}
+.inicio::after {
+  content:"PLAY\A COLLECT\A REMEMBER";
+  white-space:pre;
+  position:absolute;
+  z-index:-1;
+  right:2.5%;top:50%;
+  transform:translateY(-43%);
+  color:rgba(218,197,249,.055);
+  font:700 clamp(3.3rem,8vw,8.2rem)/.88 'Space Grotesk',sans-serif;
+  letter-spacing:-.095em;
+  text-align:right;
+  pointer-events:none;
+}
+.inicio h2 {
+  position:relative;z-index:1;
+  max-width:760px;
+  margin:0 0 17px;
+  color:#fff;
+  font:700 clamp(2.8rem,6.3vw,5.4rem)/.98 'Space Grotesk',sans-serif;
+  letter-spacing:-.085em;
+  text-shadow:0 12px 40px rgba(0,0,0,.48);
+}
+.inicio h2 span {
+  color:#d0b4ff;
+  text-shadow:0 0 34px rgba(169,119,255,.24);
+}
+.inicio p {
+  position:relative;z-index:1;
+  max-width:510px;
+  margin:0;
+  color:#c1b8cd;
+  font-size:1.02rem;
+  line-height:1.75;
+}
+.busca {
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin:0 0 52px;
+  padding:19px 22px;
+  border:1px solid var(--inv-line);
+  border-radius:9px;
+  background:linear-gradient(110deg,rgba(23,18,32,.96),rgba(13,11,19,.96));
+  box-shadow:0 12px 30px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.035);
+}
+.busca h2 {
+  flex:0 0 auto;
+  margin:0;
+  color:#e8def7;
+  font:700 .78rem 'DM Sans',sans-serif;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.busca-form { display:flex;flex:1;gap:10px; }
+.busca-form input {
+  min-width:0;
+  height:47px;
+  padding:0 16px;
+  border:1px solid #393047;
+  border-radius:6px;
+  background:#09080e;
+  color:#fff;
+}
+.busca-form input::placeholder { color:#80778b; }
+.busca-form input:focus,input:focus,textarea:focus,select:focus {
+  border-color:#a77bf1;
+  box-shadow:0 0 0 3px rgba(155,108,244,.13);
+  outline:none;
+}
+button,.btn,.botao,.botao-postar,input[type="submit"],input[type="button"],.botao-biblioteca {
+  border:1px solid rgba(207,180,255,.28);
+  border-radius:6px;
+  background:linear-gradient(120deg,#7042b5,#8956d0);
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  font-weight:800;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  box-shadow:0 7px 20px rgba(87,51,143,.2),inset 0 1px rgba(255,255,255,.12);
+  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
+}
+button:hover,.btn:hover,.botao:hover,.botao-postar:hover,input[type="submit"]:hover,
+input[type="button"]:hover,.botao-biblioteca:hover {
+  background:linear-gradient(120deg,#8756ce,#a477ed);
+  box-shadow:0 9px 26px rgba(119,73,187,.3),inset 0 1px rgba(255,255,255,.15);
+  transform:translateY(-2px);
+}
+.titulo-catalogo {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin:0 0 23px;
+  padding:0 0 16px;
+  border-bottom:1px solid var(--inv-line);
+}
+.titulo-catalogo h2 {
+  margin:0 0 5px;
+  color:#f6f1fc;
+  font:700 clamp(1.45rem,3vw,1.9rem)/1.1 'Space Grotesk',sans-serif;
+  letter-spacing:-.055em;
+  text-transform:none;
+}
+.titulo-catalogo h2::before { display:none;content:none; }
+.titulo-catalogo p {
+  margin:0;
+  color:var(--inv-muted);
+  font-size:.84rem;
+}
+.catalogo-jogos {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:19px;
+}
+.card-jogo {
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  border:1px solid #30283b;
+  border-radius:8px;
+  background:linear-gradient(180deg,#171321,#0e0c14);
+  text-align:left;
+  box-shadow:0 13px 30px rgba(0,0,0,.27);
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card-jogo::before {
+  content:"";
+  position:absolute;z-index:2;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#c5a0ff 50%,transparent);
+  opacity:0;
+  transition:opacity .25s ease;
+}
+.card-jogo:hover {
+  transform:translateY(-6px);
+  border-color:rgba(184,143,248,.62);
+  box-shadow:0 20px 42px rgba(0,0,0,.4),0 0 26px rgba(126,78,194,.12);
+}
+.card-jogo:hover::before { opacity:1; }
+.card-jogo img {
+  display:block;
+  width:100%;
+  height:clamp(205px,23vw,300px);
+  object-fit:cover;
+  filter:saturate(.93) contrast(1.04);
+  transition:transform .45s ease,filter .3s ease;
+}
+.card-jogo:hover img {
+  transform:scale(1.045);
+  filter:saturate(1.12) contrast(1.04);
+}
+.card-jogo-conteudo {
+  position:relative;
+  padding:15px 14px 16px;
+  background:linear-gradient(180deg,#171321,#100e17);
+}
+.card-jogo h3 {
+  min-height:2.5em;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  margin:0 0 7px;
+  color:#f8f4fd;
+  font:700 .96rem/1.3 'Space Grotesk',sans-serif;
+  letter-spacing:-.025em;
+  text-align:left;
+}
+.card-jogo .genero {
+  margin:0 0 9px;
+  color:#9e95ab;
+  font-size:.68rem;
+  letter-spacing:.105em;
+  text-transform:uppercase;
+}
+.card-jogo .nota {
+  margin:0 0 10px;
+  color:#d6bbff!important;
+  font-size:.8rem;
+  font-weight:800;
+}
+.botao-biblioteca {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:39px;
+  margin-top:11px;
+  padding:9px 8px;
+  font-size:.67rem;
+  text-decoration:none;
+}
+.card,.jogo-card,.game-card,.biblioteca-card,.avaliacao-card,
+.perfil-box,.form-container,.login-box,.editar-box {
+  border:1px solid var(--inv-line);
+  border-radius:9px;
+  background:linear-gradient(145deg,#181421,#100e17);
+  box-shadow:0 12px 30px rgba(0,0,0,.22);
+}
+input,textarea,select {
+  border:1px solid #393047;
+  border-radius:6px;
+  background:#0b0911;
+  color:#f7f2fc;
+}
+.status,.badge {
+  border:1px solid rgba(185,148,245,.3);
+  border-radius:5px;
+  background:rgba(132,83,205,.15);
+  color:#d9c4fa;
+}
+footer {
+  margin-top:42px;
+  padding:28px 16px;
+  border-top:1px solid var(--inv-line);
+  background:#07060b;
+  color:#898194;
+}
+:focus-visible { outline:2px solid #c4a2ff;outline-offset:3px; }
+@media(max-width:1100px) {
+  .catalogo-jogos { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@media(max-width:800px) {
+  header { flex-direction:column;gap:12px;padding:13px 16px; }
+  nav { flex-wrap:wrap;justify-content:center; }
+  .catalogo-jogos { grid-template-columns:repeat(3,minmax(0,1fr));gap:14px; }
+  .busca { align-items:stretch;flex-direction:column;gap:13px; }
+}
+@media(max-width:600px) {
+  main { padding:0 13px 42px; }
+  header { padding:13px 10px; }
+  nav { gap:3px; }
+  nav a { padding:8px 7px;font-size:.63rem;letter-spacing:.055em; }
+  .inicio { min-height:250px;margin:20px 0;padding:32px 22px;border-radius:9px; }
+  .inicio::before { font-size:.53rem;letter-spacing:.12em; }
+  .inicio::after { right:-4%;font-size:3.1rem;opacity:.8; }
+  .inicio h2 { font-size:clamp(2.2rem,10vw,3.35rem); }
+  .inicio p { max-width:95%;font-size:.88rem; }
+  .busca { margin-bottom:36px;padding:15px; }
+  .busca-form { flex-direction:column; }
+  .busca-form button { width:100%;min-height:43px; }
+  .titulo-catalogo { align-items:flex-start;flex-direction:column; }
+  .catalogo-jogos { grid-template-columns:repeat(2,minmax(0,1fr));gap:11px; }
+  .card-jogo img { height:clamp(170px,57vw,235px); }
+  .card-jogo-conteudo { padding:11px; }
+  .card-jogo h3 { font-size:.85rem; }
+  .card-jogo .genero { font-size:.61rem; }
+  .botao-biblioteca { min-height:36px;font-size:.59rem;letter-spacing:.025em; }
+}
+@media(max-width:360px) {
+  .catalogo-jogos { gap:8px; }
+  .card-jogo img { height:165px; }
+  nav a { padding:7px 5px;font-size:.59rem; }
+}
