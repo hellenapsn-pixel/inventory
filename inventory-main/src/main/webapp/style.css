@@ -4134,3 +4134,77 @@ td,th { border-color:#3a2e46 !important; }
   .login-card,.cadastro-box,.busca-box { padding:21px !important; }
   .explore-heading { align-items:flex-start; }
 }
+
+
+/* HOME — banner compacto de lançamentos recentes */
+.home-inventory .recent-releases {
+  margin: 24px 0 0;
+}
+.home-inventory .releases-heading {
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px;
+}
+.home-inventory .releases-kicker {
+  color:#c4a8e2;font:700 .62rem 'DM Sans',sans-serif;letter-spacing:.18em;
+}
+.home-inventory .releases-period {
+  color:#81758d;font:600 .58rem 'DM Sans',sans-serif;letter-spacing:.12em;
+}
+.home-inventory .releases-feature {
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:210px;
+  display:grid;grid-template-columns:1.05fr 1fr;align-items:center;
+  gap:28px;padding:25px 30px;
+  border:1px solid rgba(201,175,233,.22);
+  background:
+    radial-gradient(ellipse at 12% 50%,rgba(130,83,174,.34),transparent 45%),
+    linear-gradient(112deg,#21172d 0%,#17121f 58%,#100d16 100%);
+}
+.home-inventory .release-main,.home-inventory .release-list {position:relative;z-index:1}
+.home-inventory .release-tag {
+  color:#c6a9e4;font:700 .57rem 'DM Sans',sans-serif;letter-spacing:.16em;
+}
+.home-inventory .release-main h1 {
+  margin:12px 0 8px;color:#f7f2fb;
+  font:700 clamp(1.8rem,3.2vw,2.7rem)/1.02 'Space Grotesk',sans-serif;
+  letter-spacing:-.065em;
+}
+.home-inventory .release-main h1 em {color:#b99add;font-style:normal}
+.home-inventory .release-main p {max-width:330px;color:#a99eb4;font-size:.78rem}
+.home-inventory .release-list {display:flex;flex-direction:column}
+.home-inventory .release-item {
+  display:flex;align-items:center;gap:15px;
+  padding:11px 0;border-bottom:1px solid rgba(201,175,233,.13);
+}
+.home-inventory .release-item:last-child {border-bottom:0}
+.home-inventory .release-date {
+  flex:0 0 48px;color:#c4a8e2;
+  font:700 .58rem 'DM Sans',sans-serif;letter-spacing:.06em;
+}
+.home-inventory .release-item h2 {
+  margin:0 0 3px;color:#f0eaf6;
+  font:600 .83rem 'Space Grotesk',sans-serif;letter-spacing:-.02em;
+}
+.home-inventory .release-item p {color:#91869c;font-size:.65rem;line-height:1.4}
+.home-inventory .release-watermark {
+  position:absolute;z-index:0;right:34%;top:-55px;
+  color:rgba(197,169,228,.055);font-size:18rem;line-height:1;
+  pointer-events:none;
+}
+.home-inventory .search-strip {
+  display:block !important;
+  padding:17px 0 23px !important;
+}
+.home-inventory .busca-form {max-width:760px !important}
+.home-inventory .catalog-section {padding-top:25px !important}
+@media(max-width:700px) {
+  .home-inventory .recent-releases {margin-top:18px}
+  .home-inventory .releases-feature {
+    grid-template-columns:1fr;gap:12px;padding:22px 20px;min-height:0;
+  }
+  .home-inventory .release-main h1 {font-size:2rem}
+  .home-inventory .release-list {margin-top:2px}
+  .home-inventory .release-item {padding:9px 0}
+  .home-inventory .release-watermark {right:-10px;top:20px;font-size:11rem}
+  .home-inventory .search-strip {padding:14px 0 20px !important}
+}
