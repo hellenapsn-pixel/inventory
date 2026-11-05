@@ -319,20 +319,25 @@ stmt.execute(
                 criarTabelas(stmt);
             }
 
-            if (catalogoJaCarregado(conexao)) {
-                return false;
-            }
-
+            int quantidadeAntes = contarJogos(conexao);
             carregarCatalogo(conexao);
-            return true;
+            int quantidadeDepois = contarJogos(conexao);
+            return quantidadeDepois > quantidadeAntes;
+        }
+    }
+
+    private static int contarJogos(Connection conexao) throws Exception {
+        try (PreparedStatement stmt = conexao.prepareStatement("SELECT COUNT(*) FROM jogo");
+             ResultSet rs = stmt.executeQuery()) {
+            return rs.next() ? rs.getInt(1) : 0;
         }
     }
 
     public static void carregarCatalogo(Connection conexao) throws Exception {
         String sql =
                 "INSERT INTO jogo " +
-                "(steam_app_id, titulo, descricao, genero, plataforma, capa) " +
-                "SELECT ?, ?, ?, ?, 'PC', ? " +
+                "(steam_app_id, titulo, descricao, genero, plataforma, ano_lancamento, capa) " +
+                "SELECT ?, ?, ?, ?, ?, ?, ? " +
                 "WHERE NOT EXISTS (" +
                 "SELECT 1 FROM jogo " +
                 "WHERE steam_app_id = ? OR LOWER(titulo) = LOWER(?)" +
@@ -364,13 +369,16 @@ stmt.execute(
                 }
 
                 String[] partes = linha.split("\\|", -1);
-                if (partes.length != 3) {
+                if (partes.length != 3 && partes.length != 5) {
                     continue;
                 }
 
                 int appId = Integer.parseInt(partes[1]);
                 String titulo = partes[0].trim();
                 String genero = partes[2].trim();
+                String plataforma = partes.length == 5 ? partes[3].trim() : "PC";
+                Integer anoLancamento = partes.length == 5 && !partes[4].trim().isEmpty()
+                        ? Integer.valueOf(partes[4].trim()) : null;
                 String capa =
                         "https://cdn.akamai.steamstatic.com/steam/apps/" +
                         appId + "/library_600x900_2x.jpg";
@@ -379,10 +387,30 @@ stmt.execute(
                 stmt.setString(2, titulo);
                 stmt.setString(3, "Jogo disponível no catálogo do Inventory.");
                 stmt.setString(4, genero);
-                stmt.setString(5, capa);
-                stmt.setInt(6, appId);
-                stmt.setString(7, titulo);
+                stmt.setString(5, plataforma);
+                if (anoLancamento == null) {
+                    stmt.setNull(6, java.sql.Types.INTEGER);
+                } else {
+                    stmt.setInt(6, anoLancamento);
+                }
+                stmt.setString(7, capa);
+                stmt.setInt(8, appId);
+                stmt.setString(9, titulo);
                 stmt.addBatch();
+
+                if (partes.length == 5) {
+                    try (PreparedStatement atualizar = conexao.prepareStatement(
+                            "UPDATE jogo SET plataforma = ?, ano_lancamento = ? WHERE steam_app_id = ?")) {
+                        atualizar.setString(1, plataforma);
+                        if (anoLancamento == null) {
+                            atualizar.setNull(2, java.sql.Types.INTEGER);
+                        } else {
+                            atualizar.setInt(2, anoLancamento);
+                        }
+                        atualizar.setInt(3, appId);
+                        atualizar.executeUpdate();
+                    }
+                }
             }
 
             stmt.executeBatch();
