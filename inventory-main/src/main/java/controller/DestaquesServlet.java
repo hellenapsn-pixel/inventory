@@ -22,7 +22,7 @@ public class DestaquesServlet extends HttpServlet {
         response.setHeader("Cache-Control", "no-store");
         JsonArray lista = new JsonArray();
         String sql = "SELECT steam_app_id,titulo,plataforma,data_lancamento,capa " +
-                "FROM lancamento_steam ORDER BY atualizado_em DESC LIMIT 8";
+                "FROM lancamento_steam ORDER BY atualizado_em DESC LIMIT 3";
         try (Connection c = Conexao.conectar();
              PreparedStatement ps = c.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
