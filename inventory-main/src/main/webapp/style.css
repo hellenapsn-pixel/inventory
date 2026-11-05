@@ -2661,7 +2661,7 @@ footer {
    Layout assimétrico, capas em composição e linguagem de revista.
    ========================================================== */
 .home-inventory {
-  --acid:#c5ff52;
+  --acid:#b58aff;
   --violet:#9c70f5;
   --paper:#f4f0e9;
   --muted:#a49bad;
@@ -2717,11 +2717,11 @@ footer {
 .home-inventory .hero-actions { display:flex;align-items:center;flex-wrap:wrap;gap:24px;margin-top:34px; }
 .home-inventory .action-primary {
   display:inline-flex;align-items:center;gap:25px;padding:15px 18px;
-  color:#11130b;background:var(--acid);text-decoration:none;border:1px solid var(--acid);
+  color:#120d1b;background:var(--acid);text-decoration:none;border:1px solid var(--acid);
   font-size:.72rem;font-weight:900;letter-spacing:.025em;text-transform:uppercase;
   transition:.2s;
 }
-.home-inventory .action-primary:hover { color:#090a06;background:#d8ff91;transform:translateY(-3px); }
+.home-inventory .action-primary:hover { color:#090a06;background:#d7bdff;transform:translateY(-3px); }
 .home-inventory .action-primary span,.home-inventory .action-text span { font-size:1.05rem; }
 .home-inventory .action-text { color:#e8e1ee;text-decoration:none;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em; }
 .home-inventory .action-text:hover { color:var(--acid); }
@@ -2779,7 +2779,7 @@ footer {
   border:1px solid rgba(255,255,255,.11);border-radius:0;background:#111018;
   box-shadow:0 12px 30px rgba(0,0,0,.24);text-align:left;transition:transform .25s,border-color .25s;
 }
-.home-inventory .card-jogo:hover { transform:translateY(-7px);border-color:rgba(197,255,82,.55);box-shadow:0 20px 40px rgba(0,0,0,.4); }
+.home-inventory .card-jogo:hover { transform:translateY(-7px);border-color:rgba(181,138,255,.62);box-shadow:0 20px 40px rgba(0,0,0,.4); }
 .home-inventory .card-jogo img { height:clamp(210px,25vw,330px);filter:saturate(.88); }
 .home-inventory .card-jogo:hover img { filter:saturate(1.12); }
 .home-inventory .card-jogo-conteudo { padding:16px;background:#111018; }
@@ -2787,21 +2787,21 @@ footer {
 .home-inventory .card-jogo .genero { color:#91899b;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase; }
 .home-inventory .card-jogo .nota { color:var(--acid)!important;font-size:.78rem; }
 .home-inventory .botao-biblioteca {
-  padding:11px 9px;border:1px solid rgba(197,255,82,.35);border-radius:0;
+  padding:11px 9px;border:1px solid rgba(181,138,255,.38);border-radius:0;
   background:transparent;color:var(--acid);font-size:.62rem;letter-spacing:.08em;
 }
-.home-inventory .botao-biblioteca:hover { background:var(--acid);color:#111;transform:none;box-shadow:none; }
+.home-inventory .botao-biblioteca:hover { background:var(--acid);color:#120d1b;transform:none;box-shadow:none; }
 .home-inventory .community-banner {
   display:flex;align-items:center;justify-content:space-between;gap:25px;
-  padding:35px clamp(22px,5vw,60px);border:1px solid rgba(197,255,82,.27);
+  padding:35px clamp(22px,5vw,60px);border:1px solid rgba(181,138,255,.28);
   background:linear-gradient(110deg,rgba(83,55,125,.24),rgba(17,15,23,.95) 65%);
 }
 .home-inventory .community-banner h2 { margin:9px 0 0;color:#fff;font:700 clamp(1.7rem,3vw,2.6rem)/1.05 'Space Grotesk',sans-serif;letter-spacing:-.07em; }
 .home-inventory .community-banner>a {
-  padding:14px 18px;border:1px solid rgba(197,255,82,.45);color:var(--acid);
+  padding:14px 18px;border:1px solid rgba(181,138,255,.48);color:var(--acid);
   text-decoration:none;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
 }
-.home-inventory .community-banner>a:hover { background:var(--acid);color:#111; }
+.home-inventory .community-banner>a:hover { background:var(--acid);color:#120d1b; }
 .home-inventory .site-footer {
   display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
   padding:26px clamp(18px,5.5vw,86px);border-top:1px solid rgba(255,255,255,.1);background:#07060a;
