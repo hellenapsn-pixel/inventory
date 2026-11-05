@@ -477,37 +477,14 @@
 
 <body>
 
-<header>
-
-        <div class="logo-area">
-    <img src="icon.png" alt="Logo Inventory" class="logo-header">
-    <h1>Inventory</h1>
-</div>
-
-    <nav>
-
-        <a href="index.html">
-            Início
-        </a>
-
-        <a href="jogos">
-            Jogos
-        </a>
-
-        <a href="biblioteca">
-            Biblioteca
-        </a>
-
-        <a href="buscar-usuarios">
-            Buscar usuários
-        </a>
-
-        <a href="login.html">
-            Login
-        </a>
-
-    </nav>
-
+<header class="inventory-header">
+  <a class="inventory-brand" href="index.html"><img src="icon.png" alt="" class="inventory-brand-icon"><span>INVENTORY<span class="brand-dot">.</span></span></a>
+  <nav class="inventory-nav" aria-label="Navegação principal">
+    <a href="index.html">Explorar</a>
+    <a href="jogos">Jogos</a>
+    <a href="buscar-usuarios">Comunidade</a>
+    <a href="cadastro.html">Criar conta</a>
+  </nav>
 </header>
 
 
@@ -654,3 +631,43 @@
 
 </html>
 
+
+
+
+/* NAVEGAÇÃO UNIFICADA */
+.inventory-header{min-height:74px;height:auto;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:12px clamp(18px,5vw,64px);background:rgba(12,9,17,.96);border-bottom:1px solid #30263a;position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);box-shadow:0 8px 28px rgba(0,0,0,.24)}
+.inventory-brand{display:flex;align-items:center;gap:11px;flex:0 0 auto;color:#f5f3f7;text-decoration:none;font:700 19px 'DM Sans',Arial,sans-serif;letter-spacing:.13em}
+.inventory-brand:hover{color:#fff}
+.inventory-brand-icon{width:36px;height:36px;object-fit:contain}
+.brand-dot{color:#a855f7}
+.inventory-nav{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex-wrap:wrap;margin:0}
+.inventory-nav a{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:8px;color:#aaa1b4;text-decoration:none;font:600 12px 'DM Sans',Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;transition:background .2s,color .2s}
+.inventory-nav a:hover,.inventory-nav a.nav-current{background:rgba(124,58,237,.16);color:#fff}
+.inventory-nav a.inventory-exit{margin-left:5px;border:1px solid #493252;color:#cbb8dc}
+.inventory-nav a.inventory-exit:hover{border-color:#8b5cf6;background:rgba(124,58,237,.2)}
+@media(max-width:760px){.inventory-header{align-items:flex-start;flex-direction:column;gap:10px;padding:12px 16px}.inventory-brand-icon{width:30px;height:30px}.inventory-nav{width:100%;justify-content:flex-start;gap:3px}.inventory-nav a{padding:8px 9px;font-size:11px}.inventory-nav a.inventory-exit{margin-left:0}}
+
+/* BANNER EDITORIAL DE LANÇAMENTOS */
+.home-inventory .recent-releases{margin:25px 0 0}
+.home-inventory .releases-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.home-inventory .releases-kicker{color:#c4a8e2;font:700 .64rem 'DM Sans',sans-serif;letter-spacing:.18em}
+.home-inventory .releases-period{color:#81758d;font:600 .59rem 'DM Sans',sans-serif;letter-spacing:.12em}
+.home-inventory .releases-feature{position:relative;isolation:isolate;overflow:hidden;min-height:230px;display:grid;grid-template-columns:1.1fr .9fr;align-items:stretch;gap:24px;padding:27px 30px;border:1px solid rgba(201,175,233,.2);border-radius:16px;background:radial-gradient(ellipse at 12% 55%,rgba(130,83,174,.36),transparent 48%),linear-gradient(112deg,#21172d 0%,#17121f 58%,#100d16 100%)}
+.home-inventory .releases-feature:before{content:'';position:absolute;z-index:-1;width:270px;height:270px;right:23%;top:-130px;border:1px solid rgba(192,132,252,.16);border-radius:50%;box-shadow:0 0 0 28px rgba(192,132,252,.025),0 0 0 58px rgba(192,132,252,.02)}
+.home-inventory .release-main,.home-inventory .release-list{position:relative;z-index:1}
+.home-inventory .release-main{display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.home-inventory .release-tag{display:inline-flex;padding:6px 9px;border:1px solid rgba(192,132,252,.32);border-radius:4px;color:#d8b9fa;font:700 .58rem 'DM Sans',sans-serif;letter-spacing:.15em}
+.home-inventory .release-main h1{margin:17px 0 8px;font:700 clamp(1.8rem,3.4vw,2.8rem)/1.02 'Space Grotesk',sans-serif;letter-spacing:-.055em}
+.home-inventory .release-main h1 em{color:#c084fc;font-style:normal}
+.home-inventory .release-main p{max-width:380px;color:#b9adbf;font:400 .85rem/1.6 'DM Sans',sans-serif}
+.home-inventory .release-feature-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px;color:#d4c6df;font:600 .64rem 'DM Sans',sans-serif;letter-spacing:.06em}
+.home-inventory .release-feature-meta span{padding:7px 9px;background:rgba(9,6,13,.38);border:1px solid rgba(201,175,233,.13);border-radius:5px}
+.home-inventory .release-list{display:flex;flex-direction:column;justify-content:center;gap:0;border-left:1px solid rgba(201,175,233,.16);padding-left:24px}
+.home-inventory .release-side-label{margin-bottom:8px;color:#8f809b;font:700 .58rem 'DM Sans',sans-serif;letter-spacing:.16em}
+.home-inventory .release-item{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(201,175,233,.12)}
+.home-inventory .release-item:last-child{border-bottom:0}
+.home-inventory .release-date{color:#bd8cf1;font:700 .62rem 'DM Sans',sans-serif;letter-spacing:.08em}
+.home-inventory .release-item h2{margin:0 0 3px;color:#f4eff8;font:600 .8rem 'DM Sans',sans-serif}
+.home-inventory .release-item p{color:#92869d;font:400 .68rem 'DM Sans',sans-serif}
+.home-inventory .release-watermark{display:none}
+@media(max-width:680px){.home-inventory .releases-feature{grid-template-columns:1fr;gap:18px;padding:22px 19px}.home-inventory .release-list{border-left:0;border-top:1px solid rgba(201,175,233,.16);padding:13px 0 0}.home-inventory .release-main h1{font-size:2rem}.home-inventory .release-item{padding:10px 0}.home-inventory .releases-period{font-size:.52rem}}
