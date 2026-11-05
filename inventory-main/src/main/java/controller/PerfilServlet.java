@@ -1677,7 +1677,7 @@ public class PerfilServlet extends HttpServlet {
                 escaparHtml(jogo.capa) +
                 "' alt='" +
                 escaparHtml(jogo.titulo) +
-                "' onerror=\"this.style.display='none';\">
+                "' onerror=\"this.style.display='none';\">"
         );
         html.append("</div>");
 
