@@ -2082,3 +2082,215 @@ footer {
   .card-jogo img { height:165px; }
   nav a { font-size:.64rem; padding:7px 6px; }
 }
+
+
+/* ==========================================================
+   INVENTORY — GAMER LUXE / NEXT-GEN ARCADE
+   Identidade gamer mais evidente, mantendo acabamento premium.
+   ========================================================== */
+:root {
+  --inv-ink: #09080d;
+  --inv-panel: #111019;
+  --inv-panel-2: #171321;
+  --inv-purple: #9560f5;
+  --inv-lilac: #c9a7ff;
+  --inv-line: rgba(177,145,235,.22);
+  --inv-muted: #9d96aa;
+}
+html { background:#09080d; }
+body {
+  background:
+    radial-gradient(ellipse at 50% -18%, rgba(111,61,184,.20), transparent 43%),
+    linear-gradient(180deg,#0b0911 0%,#09080d 48%,#0c0a11 100%);
+  color:#f6f2fc;
+}
+header {
+  position:relative;
+  background:rgba(10,8,15,.96);
+  border-bottom:1px solid rgba(173,133,244,.28);
+  box-shadow:0 8px 30px rgba(0,0,0,.3);
+}
+header::after {
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#9b68f4 48%,transparent);
+  opacity:.65;
+}
+.logo-header {
+  filter:drop-shadow(0 0 9px rgba(157,103,255,.48));
+}
+.logo-area h1, header h1 {
+  text-shadow:0 0 22px rgba(156,104,255,.22);
+}
+nav a {
+  position:relative;
+  text-transform:uppercase;
+  letter-spacing:.075em;
+  font-size:.72rem;
+}
+nav a::after {
+  content:"";
+  position:absolute;
+  left:12px; right:12px; bottom:3px;
+  height:2px;
+  background:var(--inv-lilac);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .2s ease;
+}
+nav a:hover::after, nav a:focus-visible::after { transform:scaleX(1); }
+main { position:relative; }
+.inicio {
+  isolation:isolate;
+  min-height:330px;
+  border:1px solid rgba(176,135,245,.32);
+  border-left:3px solid #a875ff;
+  border-radius:10px;
+  background:
+    linear-gradient(105deg,rgba(10,8,16,.98) 0%,rgba(27,17,43,.94) 56%,rgba(54,29,83,.70) 100%);
+  box-shadow:inset 0 1px rgba(255,255,255,.035),0 22px 65px rgba(0,0,0,.28);
+}
+.inicio::before {
+  content:"▰  PLAYER ONE  /  YOUR GAME LIBRARY";
+  letter-spacing:.16em;
+  color:#c7a6ff;
+}
+.inicio::after {
+  right:-.02em;
+  bottom:-.23em;
+  color:rgba(190,151,255,.075);
+  text-shadow:0 0 55px rgba(139,86,235,.12);
+}
+.inicio h2 {
+  max-width:760px;
+  font-size:clamp(2.7rem,6vw,5.2rem);
+  letter-spacing:-.065em;
+  text-shadow:0 8px 35px rgba(0,0,0,.38);
+}
+.inicio h2 span {
+  color:#c8a6ff;
+  text-shadow:0 0 28px rgba(167,112,255,.3);
+}
+.inicio p { color:#c4bbd0; }
+.busca {
+  position:relative;
+  border:1px solid rgba(170,132,232,.24);
+  background:linear-gradient(135deg,#15111e,#0f0d15);
+  box-shadow:inset 0 1px rgba(255,255,255,.025);
+}
+.busca h2 {
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:.82rem;
+}
+.busca-form input, input, textarea, select {
+  border-color:#3a2c4e;
+  background:#0b0911;
+}
+.busca-form input:focus, input:focus, textarea:focus, select:focus {
+  border-color:#a77aff;
+  box-shadow:0 0 0 3px rgba(155,103,245,.13),0 0 18px rgba(155,103,245,.08);
+}
+.titulo-catalogo {
+  position:relative;
+  border-bottom-color:rgba(177,145,235,.24);
+}
+.titulo-catalogo h2 {
+  text-transform:uppercase;
+  letter-spacing:-.035em;
+}
+.titulo-catalogo h2::before {
+  content:"";
+  display:inline-block;
+  width:4px;
+  height:1em;
+  margin-right:11px;
+  vertical-align:-.08em;
+  background:linear-gradient(#d1b5ff,#7d4bd0);
+  box-shadow:0 0 12px rgba(173,126,255,.5);
+}
+.catalogo-jogos { gap:19px; }
+.card-jogo {
+  position:relative;
+  border:1px solid #30263c;
+  border-radius:8px;
+  background:#100e17;
+  box-shadow:0 9px 24px rgba(0,0,0,.25);
+}
+.card-jogo::before {
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:0; left:0; right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#9c68f3 48%,transparent);
+  opacity:0;
+  transition:opacity .22s ease;
+}
+.card-jogo:hover {
+  transform:translateY(-5px);
+  border-color:rgba(177,133,255,.72);
+  box-shadow:0 15px 34px rgba(0,0,0,.42),0 0 22px rgba(128,75,205,.12);
+}
+.card-jogo:hover::before { opacity:1; }
+.card-jogo img {
+  filter:saturate(1.04) contrast(1.03);
+}
+.card-jogo-conteudo {
+  position:relative;
+  background:linear-gradient(180deg,#15111d,#100e17);
+}
+.card-jogo h3 {
+  color:#f7f2ff;
+  letter-spacing:-.025em;
+}
+.card-jogo .genero {
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  font-size:.67rem;
+}
+.card-jogo .nota {
+  color:#d0b2ff!important;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+button,.btn,.botao,.botao-postar,input[type="submit"],input[type="button"],.botao-biblioteca {
+  border:1px solid rgba(205,176,255,.32);
+  border-radius:5px;
+  background:linear-gradient(110deg,#7040b5,#8955d4);
+  box-shadow:inset 0 1px rgba(255,255,255,.12),0 4px 15px rgba(91,48,151,.18);
+  text-transform:uppercase;
+  letter-spacing:.055em;
+}
+button:hover,.btn:hover,.botao:hover,.botao-postar:hover,input[type="submit"]:hover,.botao-biblioteca:hover {
+  background:linear-gradient(110deg,#8652d0,#a16ff0);
+  box-shadow:0 0 0 1px rgba(195,158,255,.18),0 7px 22px rgba(117,67,190,.28);
+}
+.card,.jogo-card,.game-card,.biblioteca-card,.avaliacao-card,
+.perfil-box,.form-container,.login-box,.editar-box {
+  border-color:rgba(173,139,224,.22);
+  background:linear-gradient(145deg,#171321,#100e17);
+  box-shadow:0 12px 30px rgba(0,0,0,.22);
+}
+.status,.badge {
+  color:#d9c4ff;
+  border-color:rgba(183,144,247,.32);
+  background:rgba(128,79,194,.16);
+  text-transform:uppercase;
+  letter-spacing:.045em;
+}
+footer {
+  background:#08070c;
+  border-top:1px solid rgba(173,139,224,.2);
+}
+@media(max-width:800px) {
+  .inicio { min-height:280px; }
+}
+@media(max-width:600px) {
+  .inicio { min-height:235px; }
+  .inicio::before { font-size:.57rem; letter-spacing:.1em; }
+  .inicio h2 { font-size:clamp(2.25rem,10vw,3.4rem); }
+  .card-jogo { border-radius:6px; }
+}
