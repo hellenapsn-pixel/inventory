@@ -3759,3 +3759,186 @@ body:not(.home-inventory) a:hover { color:#e0cff8; }
   .home-inventory .busca-form input { flex:1 1 calc(100% - 38px); }
   .home-inventory .busca-form button { width:100%; }
 }
+
+
+/* ==========================================================
+   INVENTORY — GAME JOURNAL
+   Inspirado em diários e comunidades de cinema/jogos:
+   tipografia editorial, navegação compacta e acervo em pôsteres.
+   ========================================================== */
+.home-inventory {
+  --journal-bg:#0c0a11;
+  --journal-panel:#15111d;
+  --journal-purple:#8c62bd;
+  --journal-lilac:#c9afe9;
+  --journal-line:rgba(201,175,233,.17);
+  background:var(--journal-bg);
+  background-image:radial-gradient(ellipse at 50% -20%,rgba(105,68,145,.19),transparent 55%);
+}
+.home-inventory .site-header {
+  min-height:66px;
+  padding:0 clamp(18px,5vw,76px);
+  background:rgba(12,10,17,.96);
+  border-bottom:1px solid var(--journal-line);
+  box-shadow:none;
+}
+.home-inventory .site-header nav { gap:clamp(10px,1.8vw,25px); }
+.home-inventory .site-header nav a {
+  padding:24px 0 21px;
+  color:#9b91a8;
+  border-radius:0;
+  border-bottom:2px solid transparent;
+  font:600 .72rem 'DM Sans',sans-serif;
+  letter-spacing:.02em;
+}
+.home-inventory .site-header nav a:hover,
+.home-inventory .site-header nav .nav-current {
+  color:#fff;
+  background:transparent;
+  border-bottom-color:var(--journal-lilac);
+  box-shadow:none;
+}
+.home-inventory .diary-welcome {
+  position:relative;
+  min-height:345px;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  align-items:center;
+  gap:35px;
+  overflow:hidden;
+  margin:30px 0 0;
+  padding:clamp(30px,5vw,68px);
+  border:1px solid var(--journal-line);
+  background:linear-gradient(115deg,#1b1424 0%,#15101d 55%,#100d16 100%);
+}
+.home-inventory .diary-heading { position:relative;z-index:2;max-width:650px; }
+.home-inventory .diary-eyebrow {
+  color:var(--journal-lilac);
+  font:700 .62rem 'DM Sans',sans-serif;
+  letter-spacing:.22em;
+}
+.home-inventory .diary-heading h1 {
+  margin:22px 0 16px;
+  color:#fbf8ff;
+  font:700 clamp(2.9rem,6vw,5.3rem)/.98 'Space Grotesk',sans-serif;
+  letter-spacing:-.085em;
+}
+.home-inventory .diary-heading h1 em { color:#b995dc;font-style:normal; }
+.home-inventory .diary-heading p {
+  max-width:430px;
+  margin-bottom:23px;
+  color:#a99fb2;
+  font:400 .88rem/1.8 'DM Sans',sans-serif;
+}
+.home-inventory .diary-primary {
+  display:inline-flex;align-items:center;gap:28px;
+  padding:13px 16px;
+  background:#8660b1;
+  color:#fff;text-decoration:none;
+  font:700 .72rem 'DM Sans',sans-serif;
+}
+.home-inventory .diary-primary:hover { background:#a17acb;color:#fff; }
+.home-inventory .diary-primary span { font-size:1rem; }
+.home-inventory .diary-side {
+  position:relative;z-index:2;
+  min-height:225px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:22px 0 12px 35px;
+  border-left:1px solid var(--journal-line);
+}
+.home-inventory .diary-stamp {
+  align-self:flex-end;
+  color:#a99ab8;
+  font:700 .58rem/1.5 'DM Sans',sans-serif;
+  letter-spacing:.2em;text-align:right;
+}
+.home-inventory .diary-stamp b {
+  color:#d4b9f0;
+  font:700 2.4rem 'Space Grotesk',sans-serif;
+  letter-spacing:-.08em;
+}
+.home-inventory .diary-stats { display:grid;grid-template-columns:repeat(3,1fr);gap:12px; }
+.home-inventory .diary-stats div { display:flex;flex-direction:column;gap:6px; }
+.home-inventory .diary-stats strong {
+  color:#eee4f8;
+  font:600 1.55rem 'Space Grotesk',sans-serif;
+}
+.home-inventory .diary-stats span {
+  color:#887d94;
+  font:700 .52rem 'DM Sans',sans-serif;
+  letter-spacing:.13em;
+}
+.home-inventory .diary-side-note {
+  color:#8e8299;
+  font:600 .56rem/1.7 'DM Sans',sans-serif;
+  letter-spacing:.16em;
+}
+.home-inventory .diary-decoration {
+  position:absolute;right:28%;top:-80px;
+  color:rgba(197,169,228,.035);
+  font:700 25rem/.9 'Space Grotesk',sans-serif;
+  letter-spacing:-.13em;pointer-events:none;
+}
+.home-inventory .diary-decoration span { color:rgba(197,169,228,.045); }
+.home-inventory .search-strip {
+  display:grid;grid-template-columns:190px minmax(0,700px);
+  align-items:center;gap:22px;
+  padding:24px 0 29px;
+  border-bottom:1px solid var(--journal-line);
+}
+.home-inventory .search-strip-label { gap:10px; }
+.home-inventory .search-strip-label span { color:var(--journal-lilac); }
+.home-inventory .search-strip-label strong {
+  color:#9d92a8;font:700 .59rem 'DM Sans',sans-serif;letter-spacing:.12em;
+}
+.home-inventory .busca-form {
+  max-width:700px;padding:5px 6px 5px 13px;
+  border:1px solid var(--journal-line);border-radius:4px;background:#15111c;
+}
+.home-inventory .busca-form input { background:transparent!important; }
+.home-inventory .busca-form button { border-radius:3px;background:#76519e; }
+.home-inventory .catalog-section { padding-top:38px; }
+.home-inventory .catalog-intro { margin-bottom:20px; }
+.home-inventory .catalog-intro h2 {
+  font:700 clamp(1.65rem,3vw,2.35rem) 'Space Grotesk',sans-serif;
+  letter-spacing:-.065em;
+}
+.home-inventory .catalogo-jogos {
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:27px 17px;
+}
+.home-inventory .card-jogo { border:0;background:transparent; }
+.home-inventory .card-jogo img {
+  height:clamp(185px,21vw,275px);
+  border:1px solid rgba(201,175,233,.13);
+  border-radius:3px;
+  filter:saturate(.78);
+}
+.home-inventory .card-jogo:hover img { border-color:rgba(201,175,233,.5); }
+.home-inventory .card-jogo-conteudo { padding:11px 1px 0;background:transparent; }
+.home-inventory .card-jogo h3 { font:600 .85rem 'Space Grotesk',sans-serif; }
+.home-inventory .card-jogo .nota { color:#c9afe9!important; }
+.home-inventory .botao-biblioteca {
+  border-radius:3px;border-color:rgba(201,175,233,.25);
+  background:rgba(137,96,177,.09);color:#cdb7e7;
+}
+.home-inventory .site-footer { border-top:1px solid var(--journal-line); }
+@media(max-width:850px) {
+  .home-inventory .diary-welcome { grid-template-columns:1fr .65fr;gap:20px; }
+  .home-inventory .diary-side { padding-left:22px; }
+  .home-inventory .catalogo-jogos { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@media(max-width:650px) {
+  .home-inventory .site-header { flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 14px; }
+  .home-inventory .site-header nav { flex-wrap:wrap;justify-content:center;gap:4px 14px; }
+  .home-inventory .site-header nav a { padding:7px 0; }
+  .home-inventory .diary-welcome { grid-template-columns:1fr;min-height:0;padding:30px 24px; }
+  .home-inventory .diary-heading h1 { font-size:clamp(2.8rem,13vw,4.4rem); }
+  .home-inventory .diary-side { min-height:0;gap:18px;padding:18px 0 0;border-left:0;border-top:1px solid var(--journal-line); }
+  .home-inventory .diary-stamp { display:none; }
+  .home-inventory .diary-stats { max-width:330px; }
+  .home-inventory .diary-decoration { right:-10px;top:0;font-size:15rem; }
+  .home-inventory .search-strip { grid-template-columns:1fr;gap:12px;padding:20px 0 24px; }
+  .home-inventory .catalogo-jogos { grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 13px; }
+  .home-inventory .card-jogo img { height:clamp(170px,58vw,235px); }
+}
