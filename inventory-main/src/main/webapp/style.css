@@ -3942,3 +3942,195 @@ body:not(.home-inventory) a:hover { color:#e0cff8; }
   .home-inventory .catalogo-jogos { grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 13px; }
   .home-inventory .card-jogo img { height:clamp(170px,58vw,235px); }
 }
+
+
+
+/* =========================================================
+   INVENTORY — SISTEMA VISUAL UNIFICADO
+   Interface gamer, compacta e consistente em todas as páginas
+   ========================================================= */
+:root {
+  --roxo: #8054bd !important;
+  --roxo-claro: #b99add !important;
+  --roxo-hover: #956bc9 !important;
+  --roxo-escuro: #513477 !important;
+  --fundo: #100d15 !important;
+  --fundo-secundario: #17121e !important;
+  --card: #1d1726 !important;
+  --card-hover: #261d32 !important;
+  --borda: #352941 !important;
+  --texto: #f3eff8 !important;
+  --texto-secundario: #aaa0b5 !important;
+}
+html { background:#100d15 !important; }
+body {
+  background:#100d15 !important;
+  color:#f3eff8 !important;
+  font-family:'DM Sans',Arial,sans-serif !important;
+  line-height:1.55;
+}
+body::before, body::after { pointer-events:none; }
+header, .site-header {
+  min-height:66px !important;
+  height:auto !important;
+  padding:10px clamp(16px,4vw,52px) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:18px !important;
+  background:#15111b !important;
+  border:0 !important;
+  border-bottom:1px solid #33263f !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  position:sticky !important;
+  top:0 !important;
+  z-index:1000 !important;
+}
+header h1, .wordmark, .logo-area h1 {
+  color:#f4effa !important;
+  font:700 1.08rem 'Space Grotesk',sans-serif !important;
+  letter-spacing:.035em !important;
+  margin:0 !important;
+  background:none !important;
+  -webkit-text-fill-color:currentColor !important;
+}
+.logo-area { display:flex;align-items:center;gap:10px;text-decoration:none; }
+.logo-header { width:34px !important;height:34px !important;object-fit:contain; }
+nav {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  flex-wrap:wrap !important;
+  gap:4px !important;
+}
+nav a {
+  color:#b5aabe !important;
+  font:600 .82rem 'DM Sans',sans-serif !important;
+  text-decoration:none !important;
+  padding:8px 11px !important;
+  border-radius:6px !important;
+  background:transparent !important;
+  transform:none !important;
+  transition:background .18s,color .18s !important;
+}
+nav a:hover, nav a.nav-current {
+  color:#eee5f8 !important;
+  background:#2a2036 !important;
+  transform:none !important;
+}
+main, .container, .conteudo, .page-container {
+  width:min(1160px,calc(100% - 40px)) !important;
+  max-width:1160px !important;
+  margin:30px auto !important;
+  padding:0 !important;
+}
+h1,h2,h3,h4 {
+  color:#f4eff8 !important;
+  font-family:'Space Grotesk','DM Sans',sans-serif !important;
+  letter-spacing:-.025em;
+}
+h1 { font-size:clamp(1.65rem,3vw,2.25rem) !important; }
+h2 { font-size:1.45rem !important;margin-bottom:16px !important; }
+h3 { font-size:1.02rem !important; }
+p { color:#aaa0b5 !important; }
+a { color:#b99add; }
+.card,.jogo-card,.game-card,.biblioteca-card,.avaliacao-card,.perfil-box,
+.form-container,.login-box,.editar-box,.busca-box,.login-card,.cadastro-box,
+.usuario-card,.mensagem {
+  background:#1b1622 !important;
+  border:1px solid #352941 !important;
+  border-radius:10px !important;
+  box-shadow:none !important;
+}
+button,.btn,.botao,.botao-postar,input[type="submit"],input[type="button"],
+.botao-entrar,.botao-criar-conta,.campo-busca button,.botao-perfil {
+  background:#76519e !important;
+  color:#fff !important;
+  border:1px solid #8c68b2 !important;
+  border-radius:6px !important;
+  box-shadow:none !important;
+  font-family:'DM Sans',sans-serif !important;
+  font-weight:700 !important;
+  transform:none !important;
+}
+button:hover,.btn:hover,.botao:hover,.botao-postar:hover,
+input[type="submit"]:hover,.botao-entrar:hover,.botao-criar-conta:hover,
+.campo-busca button:hover,.botao-perfil:hover {
+  background:#8964b1 !important;
+  transform:translateY(-1px) !important;
+  box-shadow:none !important;
+}
+input,textarea,select {
+  background:#100d15 !important;
+  color:#f3eff8 !important;
+  border:1px solid #40324d !important;
+  border-radius:6px !important;
+  font:400 .92rem 'DM Sans',sans-serif !important;
+}
+input:focus,textarea:focus,select:focus {
+  border-color:#9b79c0 !important;
+  box-shadow:0 0 0 2px rgba(155,121,192,.15) !important;
+}
+label { color:#d5cbdc !important;font-family:'DM Sans',sans-serif !important; }
+table { background:#1b1622 !important;color:#eee8f4 !important; }
+th { background:#292033 !important;color:#e8ddf2 !important; }
+td,th { border-color:#3a2e46 !important; }
+.site-footer {
+  margin-top:55px !important;
+  padding:22px clamp(16px,4vw,52px) !important;
+  background:#15111b !important;
+  border-top:1px solid #33263f !important;
+  color:#8f8499 !important;
+}
+.site-footer small { color:#8f8499 !important; }
+.explore-heading {
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:12px 0 24px;border-bottom:1px solid #33263f;
+}
+.section-overline,.catalog-kicker {
+  color:#a98acb !important;font:700 .65rem 'DM Sans',sans-serif !important;
+  letter-spacing:.14em;
+}
+.explore-heading h1 { margin-top:5px;font-size:2rem !important; }
+.explore-library-link,.catalog-all-link {
+  display:inline-flex;align-items:center;gap:12px;
+  padding:9px 13px;border:1px solid #49385a;border-radius:6px;
+  color:#d4c1e8 !important;text-decoration:none;font-size:.8rem;font-weight:700;
+}
+.search-strip {
+  display:grid !important;grid-template-columns:160px minmax(0,1fr) !important;
+  align-items:center;gap:18px;padding:22px 0 !important;
+  border-bottom:1px solid #33263f !important;
+}
+.search-strip-label strong { color:#b5aabe !important;font:700 .65rem 'DM Sans',sans-serif !important; }
+.busca-form { max-width:none !important;border:1px solid #40324d !important;border-radius:6px !important;background:#17121e !important; }
+.busca-form input { background:transparent !important;border:0 !important; }
+.catalog-section { padding-top:26px !important; }
+.catalog-intro { display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px !important; }
+.catalog-intro h2 { margin:4px 0 0 !important;font-size:1.55rem !important; }
+.catalogo-jogos { display:grid !important;grid-template-columns:repeat(auto-fill,minmax(165px,1fr)) !important;gap:22px 16px !important; }
+.card-jogo { min-width:0;background:transparent !important;border:0 !important;box-shadow:none !important; }
+.card-jogo img { width:100%;height:230px !important;object-fit:cover;border:1px solid #382c44;border-radius:6px !important; }
+.card-jogo-conteudo { padding:10px 1px !important;background:transparent !important; }
+.card-jogo h3 { font-size:.9rem !important; }
+.botao-biblioteca { display:inline-flex;margin-top:7px;padding:7px 9px;border:1px solid #49385a !important;border-radius:5px !important;background:#21192b !important;color:#d5c2e9 !important;text-decoration:none;font-size:.72rem; }
+.login-page,.cadastro-container { min-height:calc(100vh - 66px) !important;padding:28px 16px !important; }
+.login-card,.cadastro-box { max-width:460px !important;padding:28px !important; }
+.login-card::before,.login-card::after,.cadastro-box::before { display:none !important; }
+.login-logo { font-size:1.8rem !important; }
+.busca-container { max-width:1000px !important;margin:28px auto !important;padding:0 !important; }
+.busca-box { padding:26px !important; }
+.titulo-busca { font-size:1.65rem !important;background:none !important;-webkit-text-fill-color:#f4eff8 !important; }
+@media(max-width:760px) {
+  header,.site-header { position:relative !important;flex-direction:column !important;gap:9px !important;padding:12px !important; }
+  nav { justify-content:center !important;gap:2px !important; }
+  nav a { padding:7px 8px !important;font-size:.76rem !important; }
+  main,.container,.conteudo,.page-container { width:calc(100% - 28px) !important;margin:22px auto !important; }
+  .search-strip { grid-template-columns:1fr !important;gap:10px !important; }
+  .catalog-intro { align-items:start !important;flex-direction:column !important; }
+  .catalogo-jogos { grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:18px 12px !important; }
+  .card-jogo img { height:clamp(175px,58vw,240px) !important; }
+  .login-card,.cadastro-box,.busca-box { padding:21px !important; }
+  .explore-heading { align-items:flex-start; }
+}
