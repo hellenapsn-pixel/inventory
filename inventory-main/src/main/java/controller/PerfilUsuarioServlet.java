@@ -907,6 +907,7 @@ public class PerfilUsuarioServlet extends HttpServlet {
         html.append("@media(max-width:700px){main.container .listas{grid-template-columns:minmax(0,1fr);}main.container .listas .lista{width:100%;}}");
 
         html.append("</style>");
+        html.append("<link rel='stylesheet' href='").append(request.getContextPath()).append("/style.css'>");
 
             html.append("</head>");
 
