@@ -48,7 +48,7 @@
 
 
 <main class="home-shell nova-home">
-  <section class="recent-releases" aria-label="Jogos em destaque no catálogo">
+  <section class="recent-releases" aria-label="Lançamentos recentes">
     <div class="releases-feature" id="inventory-releases" aria-live="polite">
       <article class="release-card"><div class="release-info"><span class="release-tag">ATUALIZANDO</span><h2>Buscando os lançamentos mais recentes...</h2><div class="release-meta"><span>O catálogo será sincronizado automaticamente.</span></div></div></article>
     </div>
@@ -431,10 +431,6 @@
     const info = document.createElement('div');
     info.className = 'release-info';
 
-    const tag = document.createElement('span');
-    tag.className = 'release-tag';
-    tag.textContent = '';
-
     const titulo = document.createElement('h2');
     titulo.textContent = jogo.titulo;
 
@@ -442,20 +438,15 @@
     meta.className = 'release-meta';
 
     const plataformas = document.createElement('span');
-    const plataformasLabel = document.createElement('strong');
-    plataformasLabel.textContent = '';
 
     plataformas.appendChild(document.createTextNode(' ' + (jogo.plataforma || 'PC')));
 
     const data = document.createElement('span');
-    const dataLabel = document.createElement('strong');
-    dataLabel.textContent = '';
 
     data.appendChild(document.createTextNode(' ' + (jogo.data || 'Data não informada')));
 
     meta.appendChild(plataformas);
     meta.appendChild(data);
-    info.appendChild(tag);
     info.appendChild(titulo);
     info.appendChild(meta);
     card.appendChild(imagem);
