@@ -744,6 +744,7 @@ public class PerfilServlet extends HttpServlet {
         html.append("@media(max-width:700px){.grade{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}.capa{height:210px;}.info{padding:11px;}.info h3{font-size:13px;}.lista[style*='display:block']{padding:15px !important;}.lista[style*='display:block'] > div:nth-child(3){grid-template-columns:repeat(2,minmax(0,1fr));gap:9px !important;}.lista[style*='display:block'] img{height:165px !important;}}");
 
         html.append("</style>");
+        html.append("<link rel='stylesheet' href='").append(request.getContextPath()).append("/style.css'>");
 
         html.append("</head>");
 
