@@ -362,11 +362,11 @@ public class AvaliacaoServlet extends HttpServlet {
             html.append("<header class='inventory-header'>");
         html.append("<a class='inventory-brand' href='" + request.getContextPath() + "/index.html'><img src='" + request.getContextPath() + "/icon.png' alt='' class='inventory-brand-icon'><span>INVENTORY<span class='brand-dot'>.</span></span></a>");
         html.append("<nav class='inventory-nav' aria-label='Navegação principal'>");
-        html.append("<a href='" + request.getContextPath() + "/index.html'>Explorar</a>");
+        html.append("<a href='" + request.getContextPath() + "/index.html'>Início</a>");
         html.append("<a class='nav-current' href='" + request.getContextPath() + "/jogos'>Jogos</a>");
         html.append("<a href='" + request.getContextPath() + "/biblioteca'>Biblioteca</a>");
         html.append("<a href='" + request.getContextPath() + "/listas'>Listas</a>");
-        html.append("<a href='" + request.getContextPath() + "/buscar-usuarios'>Comunidade</a>");
+        html.append("<a href='" + request.getContextPath() + "/buscar-usuarios'>Buscar usuários</a>");
         html.append("<a href='" + request.getContextPath() + "/perfil'>Meu perfil</a>");
         html.append("<a class='inventory-exit' href='" + request.getContextPath() + "/logout'>Sair</a>");
         html.append("</nav>");
