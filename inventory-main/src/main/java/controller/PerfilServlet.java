@@ -1670,48 +1670,39 @@ public class PerfilServlet extends HttpServlet {
         StringBuilder html =
                 new StringBuilder();
 
-        html.append(
-                "<article class='jogo'>"
-        );
-
-        html.append(
-                "<div class='capa'>"
-        );
-
+        html.append("<article class='jogo'>");
+        html.append("<div class='capa'>");
         html.append(
                 "<img src='" +
                 escaparHtml(jogo.capa) +
-                "' " +
-                "alt='" +
+                "' alt='" +
                 escaparHtml(jogo.titulo) +
-                "'>"
+                "' onerror=\\"this.style.display='none';\\">"
         );
-
         html.append("</div>");
-        
 
+        html.append("<div class='info'>");
         html.append(
-                "<div class='nota'>" +
-                "⭐ " +
+                "<h3>" +
+                escaparHtml(jogo.titulo) +
+                "</h3>"
+        );
+        html.append(
+                "<div class='nota'>⭐ " +
                 jogo.nota +
-                "/5" +
-                "</div>"
+                "/5</div>"
         );
 
         if (jogo.comentario != null &&
                 !jogo.comentario.trim().isEmpty()) {
-
             html.append(
                     "<div class='comentario'>" +
-                    escaparHtml(
-                            jogo.comentario
-                    ) +
+                    escaparHtml(jogo.comentario) +
                     "</div>"
             );
         }
 
         html.append("</div>");
-
         html.append("</article>");
 
         return html.toString();
