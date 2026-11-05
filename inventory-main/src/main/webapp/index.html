@@ -36,11 +36,11 @@
 <header class="inventory-header">
   <a class="inventory-brand" href="index.html" aria-label="Inventory — início"><img src="icon.png" alt="" class="inventory-brand-icon"><span>INVENTORY<span class="brand-dot">.</span></span></a>
   <nav class="inventory-nav" aria-label="Navegação principal">
-    <a class="nav-current" href="index.html">Explorar</a>
+    <a class="nav-current" href="index.html">Início</a>
     <a href="jogos">Jogos</a>
     <a href="biblioteca">Biblioteca</a>
     <a href="listas">Listas</a>
-    <a href="buscar-usuarios">Comunidade</a>
+    <a href="buscar-usuarios">Buscar usuários</a>
     <a href="perfil">Meu perfil</a>
     <a class="inventory-exit" href="logout">Sair</a>
   </nav>
@@ -49,10 +49,6 @@
 
 <main class="home-shell nova-home">
   <section class="recent-releases" aria-label="Jogos em destaque no catálogo">
-    <div class="releases-heading">
-      <span class="releases-kicker">EM DESTAQUE NO INVENTORY</span>
-      <span class="releases-period">JOGOS · PLATAFORMAS · LANÇAMENTO</span>
-    </div>
     <div class="releases-feature" id="inventory-releases" aria-live="polite">
       <article class="release-card"><div class="release-info"><span class="release-tag">ATUALIZANDO</span><h2>Buscando os lançamentos mais recentes...</h2><div class="release-meta"><span>O catálogo será sincronizado automaticamente.</span></div></div></article>
     </div>
@@ -437,7 +433,7 @@
 
     const tag = document.createElement('span');
     tag.className = 'release-tag';
-    tag.textContent = 'NOVO LANÇAMENTO';
+    tag.textContent = '';
 
     const titulo = document.createElement('h2');
     titulo.textContent = jogo.titulo;
@@ -447,14 +443,14 @@
 
     const plataformas = document.createElement('span');
     const plataformasLabel = document.createElement('strong');
-    plataformasLabel.textContent = 'PLATAFORMAS';
-    plataformas.appendChild(plataformasLabel);
+    plataformasLabel.textContent = '';
+
     plataformas.appendChild(document.createTextNode(' ' + (jogo.plataforma || 'PC')));
 
     const data = document.createElement('span');
     const dataLabel = document.createElement('strong');
-    dataLabel.textContent = 'LANÇAMENTO';
-    data.appendChild(dataLabel);
+    dataLabel.textContent = '';
+
     data.appendChild(document.createTextNode(' ' + (jogo.data || 'Data não informada')));
 
     meta.appendChild(plataformas);
