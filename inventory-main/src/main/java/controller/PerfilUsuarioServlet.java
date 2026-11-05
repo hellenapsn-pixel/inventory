@@ -693,6 +693,43 @@ public class PerfilUsuarioServlet extends HttpServlet {
             );
 
             // =====================================================
+            // MINIATURAS DAS LISTAS
+            // =====================================================
+
+            html.append(
+                    ".lista{" +
+                    "min-width:0;" +
+                    "overflow:hidden;" +
+                    "}"
+            );
+
+            html.append(
+                    ".lista-capas{" +
+                    "display:flex;" +
+                    "align-items:flex-start;" +
+                    "gap:8px;" +
+                    "width:100%;" +
+                    "max-width:100%;" +
+                    "overflow:hidden;" +
+                    "}"
+            );
+
+            html.append(
+                    ".lista-capas img{" +
+                    "display:block;" +
+                    "flex:0 0 58px;" +
+                    "width:58px !important;" +
+                    "min-width:58px;" +
+                    "max-width:58px;" +
+                    "height:87px !important;" +
+                    "object-fit:cover;" +
+                    "border-radius:7px;" +
+                    "border:1px solid #33243f;" +
+                    "background:#18111f;" +
+                    "}"
+            );
+
+            // =====================================================
             // RESPONSIVO
             // =====================================================
 
