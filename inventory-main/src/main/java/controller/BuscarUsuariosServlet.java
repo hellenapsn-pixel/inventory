@@ -417,6 +417,7 @@ public class BuscarUsuariosServlet extends HttpServlet {
         html.append(".mini-sem{color:#5f5665;font-size:12px;}");
 
         html.append("</style>");
+        html.append("<link rel='stylesheet' href='").append(request.getContextPath()).append("/style.css'>");
         html.append("</head>");
 
         html.append("<body>");
