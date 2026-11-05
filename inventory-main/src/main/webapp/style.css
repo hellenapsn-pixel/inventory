@@ -3137,3 +3137,309 @@ footer {
   .home-inventory .card-jogo-conteudo { padding:10px; }
   .home-inventory .card-jogo h3 { font-size:.83rem; }
 }
+
+
+/* ==========================================================
+   INVENTORY — REDESIGN CLEAN 2026
+   Identidade roxo + preto, navegação e componentes unificados
+   ========================================================== */
+:root {
+  --inv-bg:#0b0910;
+  --inv-surface:#15111d;
+  --inv-surface-soft:#1b1525;
+  --inv-line:rgba(195,170,235,.14);
+  --inv-purple:#8b63c9;
+  --inv-lilac:#c2a5ee;
+  --inv-text:#f5f1fa;
+  --inv-muted:#a69caf;
+}
+body {
+  background:var(--inv-bg);
+  color:var(--inv-text);
+  font-family:'DM Sans',Arial,sans-serif;
+}
+body:not(.home-inventory) header {
+  min-height:72px;
+  padding:14px clamp(18px,5vw,64px);
+  background:rgba(12,10,16,.96);
+  border-bottom:1px solid var(--inv-line);
+  box-shadow:none;
+}
+body:not(.home-inventory) nav { gap:8px; flex-wrap:wrap; }
+body:not(.home-inventory) nav a {
+  padding:9px 13px;
+  border:1px solid transparent;
+  border-radius:7px;
+  color:var(--inv-muted);
+  font:600 .82rem 'DM Sans',sans-serif;
+  transition:background .2s,border-color .2s,color .2s;
+}
+body:not(.home-inventory) nav a:hover,
+body:not(.home-inventory) nav a.active,
+body:not(.home-inventory) nav a.nav-current {
+  color:#fff;
+  background:rgba(139,99,201,.13);
+  border-color:var(--inv-line);
+  transform:none;
+}
+body:not(.home-inventory) h1,
+body:not(.home-inventory) h2,
+body:not(.home-inventory) h3,
+body:not(.home-inventory) h4 {
+  font-family:'Space Grotesk','DM Sans',sans-serif;
+  letter-spacing:-.035em;
+}
+body:not(.home-inventory) .container,
+body:not(.home-inventory) .conteudo,
+body:not(.home-inventory) .page-container {
+  max-width:1240px;
+  margin:34px auto;
+  padding:0 clamp(18px,4vw,34px);
+}
+body:not(.home-inventory) .card,
+body:not(.home-inventory) .jogo-card,
+body:not(.home-inventory) .game-card,
+body:not(.home-inventory) .biblioteca-card,
+body:not(.home-inventory) .avaliacao-card,
+body:not(.home-inventory) .perfil-box,
+body:not(.home-inventory) .form-container,
+body:not(.home-inventory) .login-box,
+body:not(.home-inventory) .editar-box {
+  background:var(--inv-surface);
+  border:1px solid var(--inv-line);
+  border-radius:12px;
+  box-shadow:0 10px 28px rgba(0,0,0,.16);
+}
+body:not(.home-inventory) button,
+body:not(.home-inventory) .btn,
+body:not(.home-inventory) .botao,
+body:not(.home-inventory) input[type="submit"],
+body:not(.home-inventory) input[type="button"] {
+  border-radius:7px;
+  background:var(--inv-purple);
+  font:600 .86rem 'DM Sans',sans-serif;
+  box-shadow:none;
+}
+body:not(.home-inventory) button:hover,
+body:not(.home-inventory) .btn:hover,
+body:not(.home-inventory) .botao:hover,
+body:not(.home-inventory) input[type="submit"]:hover,
+body:not(.home-inventory) input[type="button"]:hover {
+  background:#a17bd8;
+  transform:translateY(-1px);
+  box-shadow:none;
+}
+body:not(.home-inventory) input,
+body:not(.home-inventory) textarea,
+body:not(.home-inventory) select {
+  border:1px solid var(--inv-line);
+  border-radius:7px;
+  background:#100d16;
+  color:var(--inv-text);
+  font:400 .9rem 'DM Sans',sans-serif;
+}
+body:not(.home-inventory) input:focus,
+body:not(.home-inventory) textarea:focus,
+body:not(.home-inventory) select:focus {
+  border-color:var(--inv-purple);
+  box-shadow:0 0 0 3px rgba(139,99,201,.14);
+}
+body:not(.home-inventory) table {
+  border-collapse:collapse;
+  border-color:var(--inv-line);
+}
+body:not(.home-inventory) th {
+  background:#21192d;
+  color:#e9def8;
+}
+body:not(.home-inventory) td,
+body:not(.home-inventory) th {
+  border-color:var(--inv-line);
+  padding:12px 14px;
+}
+body:not(.home-inventory) a { color:var(--inv-lilac); }
+body:not(.home-inventory) a:hover { color:#e0cff8; }
+
+/* Home: composição nova, sem slogans ou atalhos redundantes */
+.home-inventory {
+  background:
+    radial-gradient(ellipse at 50% -20%,rgba(117,79,165,.14),transparent 48%),
+    #0b0910;
+  color:var(--inv-text);
+  font-family:'DM Sans',Arial,sans-serif;
+}
+.home-inventory .site-header {
+  min-height:72px;
+  padding:0 clamp(18px,5vw,70px);
+  background:rgba(11,9,16,.94);
+  border-bottom:1px solid var(--inv-line);
+  box-shadow:none;
+}
+.home-inventory .logo-area { gap:10px; }
+.home-inventory .logo-header { width:31px;height:31px; }
+.home-inventory .wordmark {
+  color:#fff;
+  font:700 1.05rem 'Space Grotesk',sans-serif;
+  letter-spacing:-.045em;
+}
+.home-inventory .site-header nav { gap:clamp(10px,1.8vw,25px); }
+.home-inventory .site-header nav a {
+  padding:9px 0;
+  color:#aaa1b5;
+  font:600 .76rem 'DM Sans',sans-serif;
+  border:0;
+  border-bottom:2px solid transparent;
+  border-radius:0;
+}
+.home-inventory .site-header nav a:hover,
+.home-inventory .site-header nav .nav-current {
+  color:#fff;
+  border-bottom-color:var(--inv-purple);
+  background:none;
+  box-shadow:none;
+}
+.home-inventory .home-shell {
+  max-width:1320px;
+  padding:38px clamp(18px,5vw,70px) 75px;
+}
+.home-inventory .quick-search {
+  display:block;
+  padding:0 0 34px;
+  border:0;
+}
+.home-inventory .search-heading h2 {
+  margin:0 0 14px;
+  color:#f8f5fb;
+  font:600 1.15rem 'Space Grotesk',sans-serif;
+  letter-spacing:-.035em;
+}
+.home-inventory .busca-form {
+  max-width:760px;
+  display:flex;
+  gap:10px;
+  padding:7px;
+  border:1px solid var(--inv-line);
+  border-radius:9px;
+  background:#14101b;
+}
+.home-inventory .search-symbol { color:var(--inv-lilac); }
+.home-inventory .busca-form input {
+  height:42px;
+  padding:0 8px;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  font:400 .88rem 'DM Sans',sans-serif;
+}
+.home-inventory .busca-form button {
+  min-height:42px;
+  padding:0 18px;
+  border-radius:6px;
+  background:var(--inv-purple);
+  color:white;
+  font:600 .78rem 'DM Sans',sans-serif;
+  text-transform:none;
+}
+.home-inventory .catalog-section { padding:10px 0 0; }
+.home-inventory .section-heading {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  margin:0 0 22px;
+}
+.home-inventory .section-heading h2 {
+  margin:0;
+  color:#f7f3fb;
+  font:700 1.65rem 'Space Grotesk',sans-serif;
+  letter-spacing:-.055em;
+}
+.home-inventory .section-heading h2 span { color:var(--inv-lilac); }
+.home-inventory .catalogo-jogos {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+.home-inventory .card-jogo {
+  overflow:hidden;
+  border:1px solid var(--inv-line);
+  border-radius:10px;
+  background:#15111c;
+  box-shadow:none;
+  text-align:left;
+  transition:transform .2s,border-color .2s;
+}
+.home-inventory .card-jogo:hover {
+  transform:translateY(-4px);
+  border-color:rgba(194,165,238,.48);
+  box-shadow:0 12px 26px rgba(0,0,0,.2);
+}
+.home-inventory .card-jogo img {
+  width:100%;
+  height:clamp(190px,22vw,270px);
+  object-fit:cover;
+  filter:none;
+}
+.home-inventory .card-jogo-conteudo { padding:14px; background:#15111c; }
+.home-inventory .card-jogo h3 {
+  min-height:2.4em;
+  margin:0 0 6px;
+  color:#f5f1fa;
+  font:600 .94rem 'Space Grotesk',sans-serif;
+  letter-spacing:-.025em;
+}
+.home-inventory .card-jogo .genero {
+  color:#9c93a8;
+  font-size:.7rem;
+}
+.home-inventory .card-jogo .nota { color:var(--inv-lilac)!important; }
+.home-inventory .botao-biblioteca {
+  display:block;
+  margin-top:10px;
+  padding:10px;
+  border:1px solid rgba(194,165,238,.3);
+  border-radius:6px;
+  background:rgba(139,99,201,.08);
+  color:#d4c0f1;
+  text-align:center;
+  font:600 .7rem 'DM Sans',sans-serif;
+}
+.home-inventory .botao-biblioteca:hover {
+  background:rgba(139,99,201,.2);
+  color:white;
+  box-shadow:none;
+  transform:none;
+}
+.home-inventory .site-footer {
+  padding:23px clamp(18px,5vw,70px);
+  border-top:1px solid var(--inv-line);
+  background:#08070c;
+}
+.home-inventory .site-footer>span {
+  color:#fff;
+  font:700 .98rem 'Space Grotesk',sans-serif;
+}
+.home-inventory .site-footer small {
+  color:#82798d;
+  font:500 .62rem 'DM Sans',sans-serif;
+  letter-spacing:.06em;
+}
+@media(max-width:950px) {
+  .home-inventory .site-header { flex-wrap:wrap;justify-content:center;gap:12px;padding:15px 18px; }
+  .home-inventory .site-header nav { flex-wrap:wrap;justify-content:center; }
+  .home-inventory .catalogo-jogos { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:650px) {
+  .home-inventory .home-shell { padding-top:26px; }
+  .home-inventory .quick-search { padding-bottom:26px; }
+  .home-inventory .catalogo-jogos { grid-template-columns:repeat(2,minmax(0,1fr));gap:12px; }
+  .home-inventory .card-jogo img { height:clamp(165px,52vw,220px); }
+  .home-inventory .card-jogo-conteudo { padding:10px; }
+  .home-inventory .card-jogo h3 { font-size:.82rem; }
+}
+@media(max-width:430px) {
+  .home-inventory .site-header nav { gap:8px 13px; }
+  .home-inventory .site-header nav a { font-size:.68rem; }
+  .home-inventory .busca-form { flex-wrap:wrap; }
+  .home-inventory .busca-form input { flex-basis:calc(100% - 40px); }
+  .home-inventory .busca-form button { width:100%; }
+}
