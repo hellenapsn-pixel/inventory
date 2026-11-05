@@ -26,16 +26,36 @@
 
 
 <main class="home-shell nova-home">
-  <section class="explore-heading">
-    <div>
-      <span class="section-overline">INVENTORY / EXPLORAR</span>
-      <h1>Jogos</h1>
+  <section class="recent-releases" aria-label="Lançamentos recentes">
+    <div class="releases-heading">
+      <span class="releases-kicker">RECÉM-CHEGADOS</span>
+      <span class="releases-period">NOVEMBRO 2026</span>
     </div>
-    <a class="explore-library-link" href="biblioteca">Minha biblioteca <span>↗</span></a>
+    <div class="releases-feature">
+      <div class="release-main">
+        <span class="release-tag">DESTAQUE DA SEMANA</span>
+        <h1>Novos mundos.<br><em>Novas jornadas.</em></h1>
+        <p>Confira alguns dos jogos que chegaram recentemente.</p>
+      </div>
+      <div class="release-list">
+        <article class="release-item">
+          <span class="release-date">04 NOV</span>
+          <div><h2>World of Warcraft: Forever</h2><p>RPG · PC / Mac</p></div>
+        </article>
+        <article class="release-item">
+          <span class="release-date">04 NOV</span>
+          <div><h2>Void/Breaker</h2><p>Ação · PC / PS5 / Xbox</p></div>
+        </article>
+        <article class="release-item">
+          <span class="release-date">29 OUT</span>
+          <div><h2>The Wolf Among Us Remastered</h2><p>Aventura · PC / PS5 / Xbox</p></div>
+        </article>
+      </div>
+      <span class="release-watermark" aria-hidden="true">✦</span>
+    </div>
   </section>
 
   <section class="search-strip">
-    <div class="search-strip-label"><span>01</span><strong>BUSCAR NO ACERVO</strong></div>
     <form class="busca-form" method="GET" action="jogos">
       <span class="search-symbol">⌕</span>
       <input type="text" name="busca" placeholder="Digite o nome de um jogo..." required>
