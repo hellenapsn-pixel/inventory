@@ -2848,3 +2848,292 @@ footer {
   .home-inventory .community-banner { align-items:flex-start;flex-direction:column; }
   .home-inventory .site-footer { align-items:flex-start;flex-direction:column; }
 }
+
+
+/* ==========================================================
+   INVENTORY — CLEAN EDITION
+   Simplificação visual: menos elementos decorativos,
+   mais espaço, hierarquia clara e roxo + preto.
+   ========================================================== */
+.home-inventory {
+  background:#0b0a10;
+  color:#f5f2fa;
+}
+.home-inventory .site-header {
+  min-height:70px;
+  padding:0 clamp(18px,6vw,88px);
+  background:#0b0a10;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.home-inventory .logo-header { width:30px;height:30px; }
+.home-inventory .wordmark { font-size:1.05rem;letter-spacing:-.055em; }
+.home-inventory .site-header nav { gap:clamp(12px,2vw,28px); }
+.home-inventory .site-header nav a {
+  padding:8px 0;
+  color:#aaa4b5;
+  font-size:.7rem;
+  letter-spacing:.025em;
+  text-transform:none;
+  border:0;
+}
+.home-inventory .site-header nav a:hover,
+.home-inventory .site-header nav .nav-current {
+  color:#fff;
+  border:0;
+  background:none;
+}
+.home-inventory .site-header nav .nav-current { box-shadow:inset 0 -2px #a982ed; }
+.home-inventory .home-shell {
+  max-width:1280px;
+  padding:0 clamp(20px,6vw,82px) 68px;
+}
+.home-inventory .eyebrow-line,
+.home-inventory .hero-kicker,
+.home-inventory .hero-index,
+.home-inventory .hero-vertical,
+.home-inventory .art-label,
+.home-inventory .art-number,
+.home-inventory .hero-art-glow { display:none; }
+.home-inventory .hero-showcase {
+  min-height:470px;
+  grid-template-columns:1.05fr .95fr;
+  gap:28px;
+  margin:0;
+  border:0;
+  background:transparent;
+}
+.home-inventory .hero-copy { padding:65px 0 65px 2%; }
+.home-inventory .hero-copy h1 {
+  max-width:650px;
+  margin:0 0 20px;
+  font-size:clamp(3.4rem,6.5vw,6.2rem);
+  line-height:.98;
+  letter-spacing:-.085em;
+}
+.home-inventory .hero-copy h1 em { color:#b58aff; }
+.home-inventory .hero-copy p {
+  max-width:410px;
+  color:#a9a3b1;
+  font-size:.96rem;
+  line-height:1.75;
+}
+.home-inventory .hero-actions { gap:22px;margin-top:30px; }
+.home-inventory .action-primary {
+  padding:13px 17px;
+  border:0;
+  border-radius:7px;
+  background:#8d61d2;
+  color:#fff;
+  font-size:.7rem;
+  letter-spacing:0;
+  text-transform:none;
+}
+.home-inventory .action-primary:hover { background:#a982ed;color:#fff;transform:translateY(-2px); }
+.home-inventory .action-text {
+  color:#d4cedd;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none;
+}
+.home-inventory .hero-art {
+  min-height:410px;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 55% 50%,rgba(126,83,180,.13),transparent 65%);
+}
+.home-inventory .hero-cover-main {
+  width:min(56%,310px);
+  height:365px;
+  right:22%;
+  top:50%;
+  transform:translateY(-50%);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:9px;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+.home-inventory .hero-cover-side {
+  width:min(34%,190px);
+  height:270px;
+  left:8%;
+  top:50%;
+  transform:translateY(-45%);
+  filter:saturate(.7) brightness(.7);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:9px;
+}
+.home-inventory .quick-search {
+  grid-template-columns:.7fr 1.3fr;
+  gap:25px;
+  padding:25px 0 42px;
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.home-inventory .micro-label {
+  color:#b58aff;
+  font-size:.62rem;
+  letter-spacing:.1em;
+}
+.home-inventory .search-heading h2 {
+  margin:7px 0 0;
+  font-size:1.35rem;
+  letter-spacing:-.045em;
+}
+.home-inventory .busca-form {
+  gap:10px;
+  padding:6px 6px 6px 14px;
+  border:1px solid #30283a;
+  border-radius:8px;
+  background:#121019;
+}
+.home-inventory .search-symbol { color:#b58aff;font-size:1.35rem; }
+.home-inventory .busca-form input { height:42px;font-size:.82rem; }
+.home-inventory .busca-form button {
+  min-height:42px;
+  padding:0 17px;
+  border-radius:6px;
+  background:#8057c2;
+  font-size:.69rem;
+  letter-spacing:0;
+  text-transform:none;
+}
+.home-inventory .busca-form button:hover { background:#9a75d5; }
+.home-inventory .catalog-section { padding:48px 0 55px; }
+.home-inventory .section-heading { align-items:flex-end;margin-bottom:22px; }
+.home-inventory .section-heading h2 {
+  margin:7px 0 5px;
+  font-size:clamp(2rem,4vw,2.8rem);
+  letter-spacing:-.065em;
+}
+.home-inventory .section-heading h2 span { color:#b58aff; }
+.home-inventory .section-heading p { color:#9e97a9;font-size:.82rem; }
+.home-inventory .see-all {
+  color:#c9b6e7;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none;
+}
+.home-inventory .catalogo-jogos {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+.home-inventory .card-jogo {
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;
+  background:#13111a;
+  box-shadow:none;
+}
+.home-inventory .card-jogo::before { display:none; }
+.home-inventory .card-jogo:hover {
+  transform:translateY(-3px);
+  border-color:rgba(181,138,255,.42);
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
+}
+.home-inventory .card-jogo img {
+  height:clamp(195px,22vw,275px);
+  filter:none;
+}
+.home-inventory .card-jogo:hover img { filter:brightness(1.04); }
+.home-inventory .card-jogo-conteudo {
+  padding:14px;
+  background:#13111a;
+}
+.home-inventory .card-jogo h3 {
+  min-height:2.4em;
+  margin-bottom:5px;
+  font-size:.94rem;
+  letter-spacing:-.025em;
+}
+.home-inventory .card-jogo .genero {
+  margin-bottom:7px;
+  color:#928b9d;
+  font-size:.66rem;
+  letter-spacing:.04em;
+}
+.home-inventory .card-jogo .nota { color:#c3a4f4!important;font-size:.77rem; }
+.home-inventory .botao-biblioteca {
+  min-height:36px;
+  margin-top:9px;
+  border:1px solid rgba(181,138,255,.32);
+  border-radius:6px;
+  background:transparent;
+  color:#c7a8f5;
+  font-size:.66rem;
+  letter-spacing:0;
+  text-transform:none;
+}
+.home-inventory .botao-biblioteca:hover {
+  background:rgba(181,138,255,.12);
+  color:#e5d7fb;
+  box-shadow:none;
+}
+.home-inventory .community-banner {
+  align-items:center;
+  padding:27px 0 0;
+  border:0;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:none;
+}
+.home-inventory .community-banner .micro-label { color:#a98bd4; }
+.home-inventory .community-banner h2 {
+  margin-top:8px;
+  font-size:clamp(1.5rem,3vw,2rem);
+  letter-spacing:-.055em;
+}
+.home-inventory .community-banner>a {
+  padding:11px 15px;
+  border:1px solid #49365f;
+  border-radius:6px;
+  color:#d0b7f1;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none;
+}
+.home-inventory .community-banner>a:hover {
+  background:rgba(181,138,255,.12);
+  color:#fff;
+}
+.home-inventory .site-footer {
+  padding:23px clamp(20px,6vw,82px);
+  border-top:1px solid rgba(255,255,255,.07);
+  background:#08070c;
+}
+.home-inventory .site-footer>span { font-size:.95rem; }
+.home-inventory .site-footer p { font-size:.72rem; }
+.home-inventory .site-footer small { font-size:.55rem;letter-spacing:.06em; }
+@media(max-width:900px) {
+  .home-inventory .site-header { flex-direction:row;flex-wrap:wrap;justify-content:center;padding:14px 18px; }
+  .home-inventory .site-header nav { flex-wrap:wrap;justify-content:center; }
+  .home-inventory .hero-showcase { min-height:400px; }
+  .home-inventory .catalogo-jogos { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:700px) {
+  .home-inventory .hero-showcase { grid-template-columns:1fr;gap:0; }
+  .home-inventory .hero-copy { padding:52px 0 20px; }
+  .home-inventory .hero-copy h1 { font-size:clamp(3.1rem,12vw,5rem); }
+  .home-inventory .hero-art { min-height:300px; }
+  .home-inventory .hero-cover-main { width:43%;height:260px;right:24%; }
+  .home-inventory .hero-cover-side { width:29%;height:205px;left:17%; }
+  .home-inventory .quick-search { grid-template-columns:1fr;gap:13px;padding:22px 0 32px; }
+  .home-inventory .catalog-section { padding:38px 0 42px; }
+  .home-inventory .catalogo-jogos { grid-template-columns:repeat(2,minmax(0,1fr));gap:12px; }
+  .home-inventory .card-jogo img { height:clamp(170px,54vw,225px); }
+  .home-inventory .section-heading { align-items:flex-start;flex-direction:column;gap:10px; }
+  .home-inventory .community-banner { align-items:flex-start;flex-direction:column;gap:18px; }
+}
+@media(max-width:430px) {
+  .home-inventory .site-header { align-items:center; }
+  .home-inventory .site-header nav { gap:8px 14px; }
+  .home-inventory .site-header nav a { font-size:.66rem; }
+  .home-inventory .home-shell { padding-left:17px;padding-right:17px; }
+  .home-inventory .hero-copy { padding-top:40px; }
+  .home-inventory .hero-art { min-height:260px; }
+  .home-inventory .hero-cover-main { height:225px; }
+  .home-inventory .hero-cover-side { height:175px; }
+  .home-inventory .busca-form { flex-wrap:wrap; }
+  .home-inventory .busca-form input { flex-basis:calc(100% - 38px); }
+  .home-inventory .busca-form button { width:100%; }
+  .home-inventory .card-jogo-conteudo { padding:10px; }
+  .home-inventory .card-jogo h3 { font-size:.83rem; }
+}
