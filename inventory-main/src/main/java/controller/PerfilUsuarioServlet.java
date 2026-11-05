@@ -898,6 +898,14 @@ public class PerfilUsuarioServlet extends HttpServlet {
         html.append(".avaliacao-info{flex:1;overflow-wrap:anywhere;}");
         html.append("@media(max-width:420px){.avaliacao-capa{width:88px;min-width:88px;height:132px;flex-basis:88px;}.avaliacao-info{padding:12px;}}");
 
+        // Corrige o tamanho das capas das listas no perfil de outro usuário.
+        // Regras específicas evitam que estilos globais de imagens deformem os cards.
+        html.append("main.container .listas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:15px;align-items:start;}");
+        html.append("main.container .listas .lista{width:100%;min-width:0;max-width:100%;overflow:hidden;box-sizing:border-box;}");
+        html.append("main.container .listas .lista-capas{display:flex;flex-flow:row nowrap;align-items:flex-start;gap:8px;width:100%;max-width:100%;min-width:0;overflow:hidden;}");
+        html.append("main.container .listas .lista-capas>img{display:block!important;flex:0 0 58px!important;width:58px!important;min-width:58px!important;max-width:58px!important;height:87px!important;max-height:87px!important;object-fit:cover!important;}");
+        html.append("@media(max-width:700px){main.container .listas{grid-template-columns:minmax(0,1fr);}main.container .listas .lista{width:100%;}}");
+
         html.append("</style>");
 
             html.append("</head>");
