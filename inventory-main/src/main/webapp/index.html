@@ -53,19 +53,8 @@
       <span class="releases-kicker">EM DESTAQUE NO INVENTORY</span>
       <span class="releases-period">JOGOS · PLATAFORMAS · LANÇAMENTO</span>
     </div>
-    <div class="releases-feature">
-      <article class="release-card">
-        <img class="release-cover" src="https://cdn.akamai.steamstatic.com/steam/apps/1888930/library_600x900_2x.jpg" alt="Capa de The Last of Us Part I" loading="lazy">
-        <div class="release-info"><span class="release-tag">LANÇAMENTO</span><h2>The Last of Us Part I</h2><div class="release-meta"><span><strong>PLATAFORMAS</strong> PS5 · PC</span><span><strong>DATA</strong> 02/09/2022 · PC: 03/03/2023</span></div></div>
-      </article>
-      <article class="release-card">
-        <img class="release-cover" src="https://cdn.akamai.steamstatic.com/steam/apps/2322010/library_600x900_2x.jpg" alt="Capa de God of War Ragnarök" loading="lazy">
-        <div class="release-info"><span class="release-tag">LANÇAMENTO</span><h2>God of War Ragnarök</h2><div class="release-meta"><span><strong>PLATAFORMAS</strong> PS4 · PS5 · PC</span><span><strong>DATA</strong> 09/11/2022 · PC: 19/09/2024</span></div></div>
-      </article>
-      <article class="release-card">
-        <img class="release-cover" src="https://cdn.akamai.steamstatic.com/steam/apps/2124490/library_600x900_2x.jpg" alt="Capa de Silent Hill 2" loading="lazy">
-        <div class="release-info"><span class="release-tag">LANÇAMENTO</span><h2>Silent Hill 2</h2><div class="release-meta"><span><strong>PLATAFORMAS</strong> PS5 · PC</span><span><strong>DATA</strong> 08/10/2024</span></div></div>
-      </article>
+    <div class="releases-feature" id="inventory-releases" aria-live="polite">
+      <article class="release-card"><div class="release-info"><span class="release-tag">ATUALIZANDO</span><h2>Buscando os lançamentos mais recentes...</h2><div class="release-meta"><span>O catálogo será sincronizado automaticamente.</span></div></div></article>
     </div>
   </section>
 
@@ -427,5 +416,75 @@
   </section>
 </main>
 <footer class="site-footer"><span>INVENTORY<span class="wordmark-dot">.</span></span><small>© 2026 INVENTORY — SUA JORNADA, SUAS REGRAS.</small></footer>
+
+<script>
+(function () {
+  const area = document.getElementById('inventory-releases');
+  if (!area) return;
+
+  function criarCard(jogo) {
+    const card = document.createElement('article');
+    card.className = 'release-card';
+
+    const imagem = document.createElement('img');
+    imagem.className = 'release-cover';
+    imagem.src = jogo.capa || ('https://cdn.akamai.steamstatic.com/steam/apps/' + jogo.id + '/library_600x900_2x.jpg');
+    imagem.alt = 'Capa de ' + jogo.titulo;
+    imagem.loading = 'lazy';
+
+    const info = document.createElement('div');
+    info.className = 'release-info';
+
+    const tag = document.createElement('span');
+    tag.className = 'release-tag';
+    tag.textContent = 'NOVO LANÇAMENTO';
+
+    const titulo = document.createElement('h2');
+    titulo.textContent = jogo.titulo;
+
+    const meta = document.createElement('div');
+    meta.className = 'release-meta';
+
+    const plataformas = document.createElement('span');
+    const plataformasLabel = document.createElement('strong');
+    plataformasLabel.textContent = 'PLATAFORMAS';
+    plataformas.appendChild(plataformasLabel);
+    plataformas.appendChild(document.createTextNode(' ' + (jogo.plataforma || 'PC')));
+
+    const data = document.createElement('span');
+    const dataLabel = document.createElement('strong');
+    dataLabel.textContent = 'LANÇAMENTO';
+    data.appendChild(dataLabel);
+    data.appendChild(document.createTextNode(' ' + (jogo.data || 'Data não informada')));
+
+    meta.appendChild(plataformas);
+    meta.appendChild(data);
+    info.appendChild(tag);
+    info.appendChild(titulo);
+    info.appendChild(meta);
+    card.appendChild(imagem);
+    card.appendChild(info);
+    return card;
+  }
+
+  fetch('destaques', { cache: 'no-store' })
+    .then(function (resposta) {
+      if (!resposta.ok) throw new Error('Não foi possível consultar os lançamentos.');
+      return resposta.json();
+    })
+    .then(function (jogos) {
+      if (!Array.isArray(jogos) || jogos.length === 0) {
+        area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">CATÁLOGO</span><h2>Os próximos lançamentos aparecerão aqui.</h2><div class="release-meta"><span>A sincronização automática está aguardando os dados da Steam.</span></div></div></article>';
+        return;
+      }
+      area.replaceChildren();
+      jogos.forEach(function (jogo) { area.appendChild(criarCard(jogo)); });
+    })
+    .catch(function () {
+      area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">INVENTORY</span><h2>Não foi possível atualizar os lançamentos agora.</h2><div class="release-meta"><span>Tente novamente mais tarde.</span></div></div></article>';
+    });
+})();
+</script>
+
 </body>
 </html>
