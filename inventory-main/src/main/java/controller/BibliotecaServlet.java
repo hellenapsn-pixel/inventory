@@ -580,7 +580,7 @@ public class BibliotecaServlet extends HttpServlet {
         /* HEADER */
 
         html.append("<header class='inventory-header'>");
-        html.append("<a class='inventory-brand' href='" + request.getContextPath() + "/index.html'><img src='" + request.getContextPath() + "/logo.png' alt='' class='inventory-brand-icon'></a>");
+        html.append("<a class='inventory-brand' href='" + request.getContextPath() + "/index.html'><img src='" + request.getContextPath() + "/logo.png' alt='Inventory' class='inventory-brand-icon'></a>");
         html.append("<nav class='inventory-nav' aria-label='Navegação principal'>");
         html.append("<a href='" + request.getContextPath() + "/index.html'>Início</a>");
         html.append("<a href='" + request.getContextPath() + "/jogos'>Jogos</a>");
