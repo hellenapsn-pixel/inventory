@@ -488,7 +488,8 @@
         return;
       }
       Promise.all(jogos.map(criarCard)).then(function (cards) {
-        const cardsComCapa = cards.filter(Boolean);
+        // Candidatos extras compensam capas que falham; o banner mostra só 3 com capa.
+        const cardsComCapa = cards.filter(Boolean).slice(0, 3);
         area.replaceChildren();
 
         if (cardsComCapa.length === 0) {
