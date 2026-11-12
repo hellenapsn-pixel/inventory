@@ -1155,17 +1155,17 @@ body:not(.home-inventory) .acoes button.btn-favorito:focus-visible {
   outline-offset: 3px !important;
 }
 
-/* Marca do cabeçalho: mostrar somente o fantasma, sem o nome abaixo. */
+/* Logo do cabeçalho: preservar o fantasma inteiro, sem recortes. */
 img.inventory-brand-icon {
-    width: 52px !important;
-    height: 52px !important;
-    object-fit: cover !important;
-    object-position: center top !important;
-    clip-path: inset(0 0 36% 0) !important;
+    width: 148px !important;
+    height: 46px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    clip-path: none !important;
 }
 @media (max-width: 760px) {
     img.inventory-brand-icon {
-        width: 48px !important;
-        height: 48px !important;
+        width: 120px !important;
+        height: 38px !important;
     }
 }
