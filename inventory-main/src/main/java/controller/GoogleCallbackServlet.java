@@ -506,7 +506,7 @@ public class GoogleCallbackServlet extends HttpServlet {
             // =================================================
 
             response.sendRedirect(
-                    "perfil"
+                    "index.html"
             );
 
         } catch (Exception e) {
