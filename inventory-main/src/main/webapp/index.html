@@ -407,19 +407,45 @@
       }
 
       let tentativaAtual = 0;
+      let temporizador = null;
+      let finalizado = false;
+
+      function limparTemporizador() {
+        if (temporizador !== null) {
+          clearTimeout(temporizador);
+          temporizador = null;
+        }
+      }
+
       function tentarProximaCapa() {
-        if (tentativaAtual >= tentativas.length) {
+        limparTemporizador();
+        if (tentativaAtual >= tentativas.length || finalizado) {
+          finalizado = true;
           resolver(null);
           return;
         }
+
+        imagem.onload = function () {
+          limparTemporizador();
+          // Só aceita arquivos de imagem realmente carregados e com dimensões válidas.
+          if (imagem.complete && imagem.naturalWidth > 1 && imagem.naturalHeight > 1) {
+            finalizarComCapa();
+          } else {
+            tentarProximaCapa();
+          }
+        };
+
+        imagem.onerror = tentarProximaCapa;
         imagem.src = tentativas[tentativaAtual++];
+
+        // Evita que uma fonte lenta deixe o banner preso aguardando uma capa.
+        temporizador = setTimeout(tentarProximaCapa, 8000);
       }
 
-      imagem.onload = function () {
-        if (!imagem.naturalWidth || !imagem.naturalHeight) {
-          tentarProximaCapa();
-          return;
-        }
+      function finalizarComCapa() {
+        if (finalizado) return;
+        finalizado = true;
+        limparTemporizador();
 
         const info = document.createElement('div');
         info.className = 'release-info';
@@ -443,9 +469,17 @@
         card.appendChild(imagem);
         card.appendChild(info);
         resolver(card);
+      }
+
+      // O card só é montado depois que uma das capas passou na validação.
+      const finalizarOriginal = finalizarComCapa;
+      finalizarComCapa = function () {
+        if (finalizado) return;
+        finalizado = true;
+        limparTemporizador();
+        montarConteudoDoCard();
       };
 
-      imagem.onerror = tentarProximaCapa;
       tentarProximaCapa();
     });
   }
