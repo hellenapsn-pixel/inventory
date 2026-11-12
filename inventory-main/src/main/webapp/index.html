@@ -471,15 +471,6 @@
         resolver(card);
       }
 
-      // O card só é montado depois que uma das capas passou na validação.
-      const finalizarOriginal = finalizarComCapa;
-      finalizarComCapa = function () {
-        if (finalizado) return;
-        finalizado = true;
-        limparTemporizador();
-        montarConteudoDoCard();
-      };
-
       tentarProximaCapa();
     });
   }
