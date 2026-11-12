@@ -383,7 +383,7 @@
       const imagem = document.createElement('img');
       imagem.className = 'release-cover';
       imagem.alt = 'Capa de ' + (jogo.titulo || 'jogo');
-      imagem.loading = 'lazy';
+      imagem.loading = 'eager';
       imagem.decoding = 'async';
 
       // Tenta as fontes disponíveis e só mantém o jogo se uma imagem carregar.
