@@ -1154,18 +1154,3 @@ body:not(.home-inventory) .acoes button.btn-favorito:focus-visible {
   outline: 2px solid #c084fc !important;
   outline-offset: 3px !important;
 }
-
-/* Logo do cabeçalho: preservar o fantasma inteiro, sem recortes. */
-img.inventory-brand-icon {
-    width: 148px !important;
-    height: 46px !important;
-    object-fit: contain !important;
-    object-position: center !important;
-    clip-path: none !important;
-}
-@media (max-width: 760px) {
-    img.inventory-brand-icon {
-        width: 120px !important;
-        height: 38px !important;
-    }
-}
