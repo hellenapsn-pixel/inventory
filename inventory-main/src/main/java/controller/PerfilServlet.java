@@ -714,6 +714,17 @@ public class PerfilServlet extends HttpServlet {
         html.append("@media(max-width:500px){.grade{grid-template-columns:repeat(2,minmax(0,1fr));}.capa{height:205px;}}");
 
 
+        html.append(".avaliacoes-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch;width:100%;}");
+        html.append(".avaliacao-card{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:stretch;min-width:0;max-width:100%;overflow:hidden;background:#120e18;border:1px solid #30263a;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:border-color .2s,transform .2s;}");
+        html.append(".avaliacao-card:hover{border-color:#7c3aed;transform:translateY(-3px);}");
+        html.append(".avaliacao-capa{width:112px;height:100%;min-height:164px;max-height:190px;overflow:hidden;background:#09090b;display:flex;align-items:center;justify-content:center;}");
+        html.append(".avaliacao-capa img{display:block;width:100%;height:100%;min-height:164px;max-height:190px;object-fit:contain;}");
+        html.append(".avaliacao-capa span{font-size:11px;color:#8f8797;text-align:center;padding:8px;}");
+        html.append(".avaliacao-conteudo{min-width:0;padding:14px;display:flex;flex-direction:column;gap:9px;overflow-wrap:anywhere;}");
+        html.append(".avaliacao-conteudo h3{margin:0;color:#fff;font-size:15px;line-height:1.35;overflow-wrap:anywhere;}");
+        html.append(".avaliacao-nota{color:#fbbf24;font-size:12px;font-weight:700;}");
+        html.append(".avaliacao-comentario{margin:0;color:#a1a1aa;font-size:11px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;}");
+        html.append("@media(max-width:560px){.avaliacoes-grade{grid-template-columns:minmax(0,1fr);gap:12px;}.avaliacao-card{grid-template-columns:92px minmax(0,1fr);}.avaliacao-capa{width:92px;min-height:138px;max-height:170px;}.avaliacao-capa img{min-height:138px;max-height:170px;}.avaliacao-conteudo{padding:11px;gap:7px;}.avaliacao-conteudo h3{font-size:13px;}}");
         html.append("</style>");
         html.append("<link rel='stylesheet' href='").append(request.getContextPath()).append("/style.css'>");
 
@@ -966,7 +977,7 @@ public class PerfilServlet extends HttpServlet {
 
         } else {
 
-            html.append("<div class='grade'>");
+            html.append("<div class='avaliacoes-grade'>");
 
             for (JogoInfo jogo :
                     avaliacoes) {
@@ -1635,48 +1646,45 @@ public class PerfilServlet extends HttpServlet {
         StringBuilder html =
                 new StringBuilder();
 
-        html.append(
-                "<article class='jogo'>"
-        );
+        html.append("<article class='avaliacao-card'>");
 
-        html.append(
-                "<div class='capa'>"
-        );
-
-        html.append(
-                "<img src='" +
-                escaparHtml(jogo.capa) +
-                "' " +
-                "alt='" +
-                escaparHtml(jogo.titulo) +
-                "'>"
-        );
-
+        html.append("<div class='avaliacao-capa'>");
+        if (jogo.capa != null && !jogo.capa.trim().isEmpty()) {
+            html.append(
+                    "<img src='" +
+                    escaparHtml(jogo.capa) +
+                    "' alt='" +
+                    escaparHtml(jogo.titulo) +
+                    "'>"
+            );
+        } else {
+            html.append("<span>Sem capa</span>");
+        }
         html.append("</div>");
-        
+
+        html.append("<div class='avaliacao-conteudo'>");
+        html.append(
+                "<h3>" +
+                escaparHtml(jogo.titulo) +
+                "</h3>"
+        );
 
         html.append(
-                "<div class='nota'>" +
-                "⭐ " +
+                "<div class='avaliacao-nota'>⭐ " +
                 jogo.nota +
-                "/5" +
-                "</div>"
+                "/5</div>"
         );
 
         if (jogo.comentario != null &&
                 !jogo.comentario.trim().isEmpty()) {
-
             html.append(
-                    "<div class='comentario'>" +
-                    escaparHtml(
-                            jogo.comentario
-                    ) +
-                    "</div>"
+                    "<p class='avaliacao-comentario'>" +
+                    escaparHtml(jogo.comentario) +
+                    "</p>"
             );
         }
 
         html.append("</div>");
-
         html.append("</article>");
 
         return html.toString();
