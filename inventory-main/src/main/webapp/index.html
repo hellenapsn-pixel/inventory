@@ -389,13 +389,15 @@
       // Tenta as fontes disponíveis e só mantém o jogo se uma imagem carregar.
       const idSteam = String(jogo.id || '').trim();
       const capaSalva = typeof jogo.capa === 'string' ? jogo.capa.trim() : '';
+      // Prioriza a URL de capa devolvida pela própria API da Steam.
+      // As imagens library_* são tentadas depois, pois nem todo jogo possui esses arquivos.
       const tentativas = [
-        idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
-        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
-        idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
-        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
         capaSalva,
-        idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/header.jpg' : '',
+        idSteam ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+        idSteam ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+        idSteam ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + idSteam + '/header.jpg' : '',
         idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/header.jpg' : ''
       ].filter(function (url, indice, lista) {
         return url && lista.indexOf(url) === indice;
@@ -439,7 +441,7 @@
         imagem.src = tentativas[tentativaAtual++];
 
         // Evita que uma fonte lenta deixe o banner preso aguardando uma capa.
-        temporizador = setTimeout(tentarProximaCapa, 8000);
+        temporizador = setTimeout(tentarProximaCapa, 4000);
       }
 
       function finalizarComCapa() {
