@@ -107,7 +107,7 @@ public class LoginServlet extends HttpServlet {
             // IR PARA O PERFIL
             // =========================================
 
-            response.sendRedirect("perfil");
+            response.sendRedirect("index.html");
 
         } catch (Exception e) {
 
