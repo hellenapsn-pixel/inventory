@@ -37,7 +37,7 @@ public class VisualizarBancoServlet extends HttpServlet {
         response.setHeader("X-Content-Type-Options", "nosniff");
         response.setHeader("X-Frame-Options", "DENY");
         response.setHeader("Content-Security-Policy",
-                "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'");
+                "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'");
 
         HttpSession session = request.getSession(false);
         if (session == null || !(session.getAttribute("usuario") instanceof Usuario)) {
@@ -71,13 +71,13 @@ public class VisualizarBancoServlet extends HttpServlet {
             out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
             out.println("<title>Banco Inventory</title><style>");
             out.println("body{font-family:system-ui,Arial;margin:0;padding:14px;background:#f3f4f6;color:#202124}");
-            out.println("header,.panel{background:#fff;border:1px solid #ddd;border-radius:12px;padding:14px;margin-bottom:14px}");
+            out.println("header,.panel{background:#fff;border:1px solid #ddd;border-radius:12px;padding:14px;margin-bottom:14px}header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:#0c0911;border-color:#30263a;color:#f5f3f7}header .brand-logo{width:148px;height:46px;object-fit:contain}header h1{margin:0;color:#fff}");
             out.println("h1{font-size:1.3rem}h2{font-size:1.05rem;overflow-wrap:anywhere}");
             out.println(".note{font-size:.9rem;color:#555}.wrap{overflow:auto;max-width:100%}");
             out.println("table{border-collapse:collapse;width:100%;font-size:.86rem;background:white}");
             out.println("th,td{border:1px solid #ddd;padding:8px;text-align:left;vertical-align:top;overflow-wrap:anywhere;max-width:300px}");
             out.println("th{background:#edf0f4;position:sticky;top:0}.count{font-size:.85rem;color:#555}");
-            out.println("</style></head><body><header><h1>Inventory — banco SQLite</h1>");
+            out.println("</style></head><body><header><a href='" + escapeHtml(request.getContextPath()) + "/index.html' aria-label='Voltar ao Inventory'><img class='brand-logo' src='" + escapeHtml(request.getContextPath()) + "/logo.png' alt='Inventory'></a><h1>Inventory — banco SQLite</h1>");
             out.println("<p class='note'>Somente leitura. Campos de senha, token e segredo são ocultados.</p>");
             out.println("<p class='note'>Conta autorizada: " + escapeHtml(email) + "</p>");
             out.println("<p><a href='" + escapeHtml(request.getContextPath())
