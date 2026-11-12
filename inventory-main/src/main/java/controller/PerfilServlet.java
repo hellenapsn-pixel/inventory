@@ -714,35 +714,6 @@ public class PerfilServlet extends HttpServlet {
         html.append("@media(max-width:500px){.grade{grid-template-columns:repeat(2,minmax(0,1fr));}.capa{height:205px;}}");
 
 
-        /* VISUAL DOS CARDS DO PERFIL */
-        html.append(".secao{margin-top:52px;}");
-        html.append(".topo{padding-bottom:13px;border-bottom:1px solid #30243b;margin-bottom:22px;}");
-        html.append(".topo h2{font-size:23px;letter-spacing:.2px;color:#f5edff;}");
-        html.append(".contador{font-size:11px;padding:6px 12px;color:#d8b4fe;background:#21142d;border-color:#54336c;}");
-        html.append(".grade{grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:20px;}");
-        html.append(".jogo{position:relative;background:linear-gradient(160deg,#191222,#100d16 75%);border:1px solid #33253f;border-radius:17px;box-shadow:0 10px 28px rgba(0,0,0,.22);}");
-        html.append(".jogo:hover{transform:translateY(-6px);border-color:#9b5de5;box-shadow:0 18px 38px rgba(124,58,237,.16);}");
-        html.append(".capa{height:255px;position:relative;overflow:hidden;background:#0a0810;}");
-        html.append(".capa img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;}");
-        html.append(".jogo:hover .capa img{transform:scale(1.045);}");
-        html.append(".info{padding:14px 15px 16px;}");
-        html.append(".info h3{font-size:15px;line-height:1.35;min-height:40px;color:#fff;font-weight:700;}");
-        html.append(".tipo{font-size:11px;color:#c4a5e8;margin-top:9px;}");
-        html.append(".nota{display:inline-flex;align-items:center;gap:5px;margin:12px 14px 0;padding:6px 10px;border-radius:8px;background:#30200d;color:#fbbf24;font-size:13px;font-weight:700;}");
-        html.append(".comentario{margin:10px 14px 14px;padding:10px 11px;border-left:2px solid #8b5cf6;border-radius:0 8px 8px 0;background:#171020;color:#c4b5d0;font-size:12px;line-height:1.55;-webkit-line-clamp:4;}");
-        html.append(".lista[style*='display:block']{background:linear-gradient(145deg,#191222,#100d16) !important;border:1px solid #382846 !important;border-radius:18px !important;padding:20px !important;margin:0 0 18px !important;box-shadow:0 12px 30px rgba(0,0,0,.2) !important;}");
-        html.append(".lista[style*='display:block']:hover{transform:translateY(-3px);border-color:#8b5cf6 !important;}");
-        html.append(".lista-icone{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#9333ea,#5b21b6);box-shadow:0 6px 18px rgba(124,58,237,.22);}");
-        html.append(".lista-info h3{font-size:18px !important;color:#fff !important;}");
-        html.append(".lista-info p{font-size:12px !important;color:#b9a7c8 !important;}");
-        html.append(".lista[style*='display:block'] > div:nth-child(3){display:grid !important;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:13px !important;overflow:visible !important;padding:12px 0 2px !important;}");
-        html.append(".lista[style*='display:block'] > div:nth-child(3) > div{min-width:0 !important;max-width:none !important;padding:8px;background:#100b17;border:1px solid #30213b;border-radius:12px;transition:.2s;}");
-        html.append(".lista[style*='display:block'] > div:nth-child(3) > div:hover{border-color:#8b5cf6;transform:translateY(-3px);}");
-        html.append(".lista[style*='display:block'] img{width:100% !important;height:150px !important;object-fit:cover !important;border-radius:8px !important;border:0 !important;}");
-        html.append(".lista[style*='display:block'] > div:nth-child(3) > div > div{font-size:11px !important;color:#e9d5ff !important;min-height:30px;}");
-        html.append(".vazio{padding:38px 22px;background:rgba(20,14,28,.65);border:1px dashed #59416b;color:#b8a6c7;font-size:13px;}");
-        html.append("@media(max-width:700px){.grade{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}.capa{height:210px;}.info{padding:11px;}.info h3{font-size:13px;}.lista[style*='display:block']{padding:15px !important;}.lista[style*='display:block'] > div:nth-child(3){grid-template-columns:repeat(2,minmax(0,1fr));gap:9px !important;}.lista[style*='display:block'] img{height:165px !important;}}");
-
         html.append("</style>");
         html.append("<link rel='stylesheet' href='").append(request.getContextPath()).append("/style.css'>");
 
