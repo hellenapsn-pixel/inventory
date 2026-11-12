@@ -1154,3 +1154,18 @@ body:not(.home-inventory) .acoes button.btn-favorito:focus-visible {
   outline: 2px solid #c084fc !important;
   outline-offset: 3px !important;
 }
+
+/* Marca do cabeçalho: mostrar somente o fantasma, sem o nome abaixo. */
+img.inventory-brand-icon {
+    width: 52px !important;
+    height: 52px !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    clip-path: inset(0 0 36% 0) !important;
+}
+@media (max-width: 760px) {
+    img.inventory-brand-icon {
+        width: 48px !important;
+        height: 48px !important;
+    }
+}
