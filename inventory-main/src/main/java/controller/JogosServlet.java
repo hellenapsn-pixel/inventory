@@ -308,32 +308,24 @@ public class JogosServlet extends HttpServlet {
 
         html.append(
             ".btn-favorito{" +
-            "display:flex;" +
-            "align-items:center;" +
-            "justify-content:center;" +
-            "width:100%;" +
-            "min-height:40px;" +
-            "padding:10px 12px;" +
-            "background:#21152d;" +
-            "border:1px solid #7c3aed;" +
-            "border-radius:8px;" +
-            "color:#c084fc;" +
-            "font-family:'Rajdhani',sans-serif;" +
-            "font-size:12px;" +
-            "font-weight:600;" +
-            "text-align:center;" +
-            "cursor:pointer;" +
-            "transition:all .2s ease;" +
-            "white-space:nowrap}"
+            "display:flex;align-items:center;justify-content:center;gap:9px;" +
+            "width:100%;min-height:44px;padding:11px 14px;" +
+            "background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(168,85,247,.08));" +
+            "border:1px solid rgba(168,85,247,.55);border-radius:10px;" +
+            "color:#e9d5ff;font-family:'Rajdhani',sans-serif;" +
+            "font-size:13px;font-weight:700;letter-spacing:.35px;" +
+            "text-align:center;cursor:pointer;" +
+            "transition:background .2s,border-color .2s,transform .2s,box-shadow .2s;" +
+            "white-space:normal;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}"
         );
 
         html.append(
             ".btn-favorito:hover{" +
-            "background:#7c3aed;" +
-            "border-color:#a855f7;" +
-            "color:#fff;" +
-            "transform:translateY(-1px);" +
-            "box-shadow:0 5px 15px rgba(124,58,237,.3)}"
+            "background:linear-gradient(135deg,#7c3aed,#9333ea);" +
+            "border-color:#c084fc;color:#fff;" +
+            "transform:translateY(-2px);" +
+            "box-shadow:0 8px 20px rgba(124,58,237,.3)}" +
+            ".btn-favorito:focus-visible{outline:2px solid #c084fc;outline-offset:3px}"
         );
 
         html.append(
@@ -560,7 +552,7 @@ public class JogosServlet extends HttpServlet {
                     "class='btn-favorito'>"
                 );
 
-                html.append("♡ Adicionar aos favoritos");
+                html.append("♡&nbsp; Adicionar aos favoritos");
 
                 html.append("</button>");
 
