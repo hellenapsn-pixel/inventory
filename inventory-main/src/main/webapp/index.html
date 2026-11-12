@@ -364,6 +364,153 @@
 </main>
 <footer class="site-footer"><span>INVENTORY<span class="wordmark-dot">.</span></span></footer>
 
+<script>
+(function () {
+  const area = document.getElementById('inventory-releases');
+  if (!area) return;
+
+  function criarCard(jogo) {
+    return new Promise(function (resolver) {
+      const card = document.createElement('article');
+      card.className = 'release-card';
+
+      const imagem = document.createElement('img');
+      imagem.className = 'release-cover';
+      imagem.alt = 'Capa de ' + (jogo.titulo || 'jogo');
+      imagem.loading = 'eager';
+      imagem.decoding = 'async';
+
+      // Tenta as fontes disponíveis e só mantém o jogo se uma imagem carregar.
+      const idSteam = String(jogo.id || '').trim();
+      const capaSalva = typeof jogo.capa === 'string' ? jogo.capa.trim() : '';
+      // Prioriza a URL de capa devolvida pela própria API da Steam.
+      // As imagens library_* são tentadas depois, pois nem todo jogo possui esses arquivos.
+      const baseSteam = idSteam
+        ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/'
+        : '';
+      const tentativas = [
+        capaSalva,
+        baseSteam ? baseSteam + 'library_600x900_2x.jpg' : '',
+        baseSteam ? baseSteam + 'library_600x900.jpg' : '',
+        baseSteam ? baseSteam + 'header.jpg' : '',
+        idSteam ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+        idSteam ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+        idSteam ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + idSteam + '/header.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/header.jpg' : ''
+      ].filter(function (url, indice, lista) {
+        return url && lista.indexOf(url) === indice;
+      });
+
+      if (!tentativas.length) {
+        resolver(null);
+        return;
+      }
+
+      let tentativaAtual = 0;
+      let temporizador = null;
+      let finalizado = false;
+
+      function limparTemporizador() {
+        if (temporizador !== null) {
+          clearTimeout(temporizador);
+          temporizador = null;
+        }
+      }
+
+      function tentarProximaCapa() {
+        limparTemporizador();
+        if (tentativaAtual >= tentativas.length || finalizado) {
+          finalizado = true;
+          resolver(null);
+          return;
+        }
+
+        imagem.onload = function () {
+          limparTemporizador();
+          // Só aceita arquivos de imagem realmente carregados e com dimensões válidas.
+          if (imagem.complete && imagem.naturalWidth > 1 && imagem.naturalHeight > 1) {
+            finalizarComCapa();
+          } else {
+            tentarProximaCapa();
+          }
+        };
+
+        imagem.onerror = tentarProximaCapa;
+        imagem.src = tentativas[tentativaAtual++];
+
+        // Evita que uma fonte lenta deixe o banner preso aguardando uma capa.
+        temporizador = setTimeout(tentarProximaCapa, 4000);
+      }
+
+      function finalizarComCapa() {
+        if (finalizado) return;
+        finalizado = true;
+        limparTemporizador();
+
+        const info = document.createElement('div');
+        info.className = 'release-info';
+
+        const titulo = document.createElement('h2');
+        titulo.textContent = jogo.titulo || 'Jogo';
+
+        const meta = document.createElement('div');
+        meta.className = 'release-meta';
+
+        const plataformas = document.createElement('span');
+        plataformas.textContent = jogo.plataforma || 'PC';
+
+        const data = document.createElement('span');
+        data.textContent = jogo.data || 'Data não informada';
+
+        meta.appendChild(plataformas);
+        meta.appendChild(data);
+        info.appendChild(titulo);
+        info.appendChild(meta);
+        card.appendChild(imagem);
+        card.appendChild(info);
+        resolver(card);
+      }
+
+      tentarProximaCapa();
+    });
+  }
+
+  fetch('destaques', { cache: 'no-store' })
+    .then(function (resposta) {
+      if (!resposta.ok) throw new Error('Não foi possível consultar os lançamentos.');
+      return resposta.json();
+    })
+    .then(function (jogos) {
+      if (!Array.isArray(jogos) || jogos.length === 0) {
+        area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">CATÁLOGO</span><h2>Os próximos lançamentos aparecerão aqui.</h2><div class="release-meta"><span>A sincronização automática está aguardando os dados da Steam.</span></div></div></article>';
+        return;
+      }
+      // Cada card entra assim que a capa carrega, sem esperar os outros; máximo de 3.
+      let exibidos = 0;
+      let pendentes = jogos.length;
+      function concluir() {
+        if (--pendentes === 0 && exibidos === 0) {
+          area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">LANÇAMENTOS</span><h2>Nenhum lançamento com capa disponível.</h2><div class="release-meta"><span>Os jogos aparecerão aqui quando uma capa válida estiver disponível.</span></div></div></article>';
+        }
+      }
+      jogos.forEach(function (jogo) {
+        criarCard(jogo).then(function (card) {
+          if (card && exibidos < 3) {
+            if (exibidos++ === 0) area.replaceChildren();
+            area.appendChild(card);
+          }
+          concluir();
+        });
+      });
+    })
+    .catch(function () {
+      area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">INVENTORY</span><h2>Não foi possível atualizar os lançamentos agora.</h2><div class="release-meta"><span>Tente novamente mais tarde.</span></div></div></article>';
+    });
+})();
+</script>
+
 
 </body>
 </html>
