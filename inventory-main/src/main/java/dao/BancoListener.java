@@ -17,4 +17,9 @@ public class BancoListener implements ServletContextListener {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent event) {
+        // Nenhum recurso precisa ser encerrado neste listener.
+    }
 }
