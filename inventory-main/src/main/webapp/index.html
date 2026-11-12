@@ -21,6 +21,7 @@
 .home-inventory .release-card{display:grid;grid-template-columns:104px minmax(0,1fr);gap:15px;align-items:center;min-height:154px;padding:14px;border:1px solid rgba(201,175,233,.18);border-radius:13px;background:linear-gradient(135deg,#21172d,#15111c);transition:border-color .2s,transform .2s}
 .home-inventory .release-card:hover{border-color:#8b5cf6;transform:translateY(-3px)}
 .home-inventory .release-cover{width:104px;height:146px;display:block;object-fit:cover;border-radius:7px;background:#0d0914;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.home-inventory .release-cover-placeholder{display:flex;align-items:center;justify-content:center;padding:10px;box-sizing:border-box;color:#b9a7ca;text-align:center;font:700 .58rem/1.4 'DM Sans',sans-serif;letter-spacing:.1em;background:linear-gradient(145deg,#30213f,#110d18);border:1px solid rgba(201,175,233,.2)}
 .home-inventory .release-info{min-width:0}
 .home-inventory .release-tag{display:inline-block;margin-bottom:9px;color:#c084fc;font:700 .56rem 'DM Sans',sans-serif;letter-spacing:.13em}
 .home-inventory .release-info h2{margin:0 0 10px;color:#f5f0fa;font:700 .95rem/1.25 'DM Sans',sans-serif}
@@ -380,9 +381,46 @@
 
     const imagem = document.createElement('img');
     imagem.className = 'release-cover';
-    imagem.src = jogo.capa || ('https://cdn.akamai.steamstatic.com/steam/apps/' + jogo.id + '/library_600x900_2x.jpg');
     imagem.alt = 'Capa de ' + jogo.titulo;
     imagem.loading = 'lazy';
+    imagem.decoding = 'async';
+
+    // Prioriza artes verticais da Steam. A URL salva no banco pode ser antiga
+    // ou apontar para a imagem horizontal do cabeçalho.
+    const idSteam = String(jogo.id || '').trim();
+    const capaSalva = typeof jogo.capa === 'string' ? jogo.capa.trim() : '';
+    const tentativas = [
+      idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+      idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+      idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+      idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+      capaSalva,
+      idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/header.jpg' : '',
+      idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/header.jpg' : ''
+    ].filter(function (url, indice, lista) {
+      return url && lista.indexOf(url) === indice;
+    });
+
+    let tentativaAtual = 0;
+    imagem.onerror = function () {
+      tentativaAtual++;
+      if (tentativaAtual < tentativas.length) {
+        imagem.src = tentativas[tentativaAtual];
+        return;
+      }
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'release-cover release-cover-placeholder';
+      placeholder.setAttribute('role', 'img');
+      placeholder.setAttribute('aria-label', 'Capa indisponível para ' + jogo.titulo);
+      placeholder.textContent = 'CAPA INDISPONÍVEL';
+      imagem.replaceWith(placeholder);
+    };
+    if (tentativas.length) {
+      imagem.src = tentativas[0];
+    } else {
+      imagem.dispatchEvent(new Event('error'));
+    }
 
     const info = document.createElement('div');
     info.className = 'release-info';
