@@ -376,76 +376,78 @@
   if (!area) return;
 
   function criarCard(jogo) {
-    const card = document.createElement('article');
-    card.className = 'release-card';
+    return new Promise(function (resolver) {
+      const card = document.createElement('article');
+      card.className = 'release-card';
 
-    const imagem = document.createElement('img');
-    imagem.className = 'release-cover';
-    imagem.alt = 'Capa de ' + jogo.titulo;
-    imagem.loading = 'lazy';
-    imagem.decoding = 'async';
+      const imagem = document.createElement('img');
+      imagem.className = 'release-cover';
+      imagem.alt = 'Capa de ' + (jogo.titulo || 'jogo');
+      imagem.loading = 'lazy';
+      imagem.decoding = 'async';
 
-    // Prioriza artes verticais da Steam. A URL salva no banco pode ser antiga
-    // ou apontar para a imagem horizontal do cabeçalho.
-    const idSteam = String(jogo.id || '').trim();
-    const capaSalva = typeof jogo.capa === 'string' ? jogo.capa.trim() : '';
-    const tentativas = [
-      idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
-      idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
-      idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
-      idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
-      capaSalva,
-      idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/header.jpg' : '',
-      idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/header.jpg' : ''
-    ].filter(function (url, indice, lista) {
-      return url && lista.indexOf(url) === indice;
-    });
+      // Tenta as fontes disponíveis e só mantém o jogo se uma imagem carregar.
+      const idSteam = String(jogo.id || '').trim();
+      const capaSalva = typeof jogo.capa === 'string' ? jogo.capa.trim() : '';
+      const tentativas = [
+        idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900_2x.jpg' : '',
+        idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/library_600x900.jpg' : '',
+        capaSalva,
+        idSteam ? 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/' + idSteam + '/header.jpg' : '',
+        idSteam ? 'https://cdn.akamai.steamstatic.com/steam/apps/' + idSteam + '/header.jpg' : ''
+      ].filter(function (url, indice, lista) {
+        return url && lista.indexOf(url) === indice;
+      });
 
-    let tentativaAtual = 0;
-    imagem.onerror = function () {
-      tentativaAtual++;
-      if (tentativaAtual < tentativas.length) {
-        imagem.src = tentativas[tentativaAtual];
+      if (!tentativas.length) {
+        resolver(null);
         return;
       }
 
-      const placeholder = document.createElement('div');
-      placeholder.className = 'release-cover release-cover-placeholder';
-      placeholder.setAttribute('role', 'img');
-      placeholder.setAttribute('aria-label', 'Capa indisponível para ' + jogo.titulo);
-      placeholder.textContent = 'CAPA INDISPONÍVEL';
-      imagem.replaceWith(placeholder);
-    };
-    if (tentativas.length) {
-      imagem.src = tentativas[0];
-    } else {
-      imagem.dispatchEvent(new Event('error'));
-    }
+      let tentativaAtual = 0;
+      function tentarProximaCapa() {
+        if (tentativaAtual >= tentativas.length) {
+          resolver(null);
+          return;
+        }
+        imagem.src = tentativas[tentativaAtual++];
+      }
 
-    const info = document.createElement('div');
-    info.className = 'release-info';
+      imagem.onload = function () {
+        if (!imagem.naturalWidth || !imagem.naturalHeight) {
+          tentarProximaCapa();
+          return;
+        }
 
-    const titulo = document.createElement('h2');
-    titulo.textContent = jogo.titulo;
+        const info = document.createElement('div');
+        info.className = 'release-info';
 
-    const meta = document.createElement('div');
-    meta.className = 'release-meta';
+        const titulo = document.createElement('h2');
+        titulo.textContent = jogo.titulo || 'Jogo';
 
-    const plataformas = document.createElement('span');
+        const meta = document.createElement('div');
+        meta.className = 'release-meta';
 
-    plataformas.appendChild(document.createTextNode(' ' + (jogo.plataforma || 'PC')));
+        const plataformas = document.createElement('span');
+        plataformas.textContent = jogo.plataforma || 'PC';
 
-    const data = document.createElement('span');
+        const data = document.createElement('span');
+        data.textContent = jogo.data || 'Data não informada';
 
-    data.appendChild(document.createTextNode(' ' + (jogo.data || 'Data não informada')));
+        meta.appendChild(plataformas);
+        meta.appendChild(data);
+        info.appendChild(titulo);
+        info.appendChild(meta);
+        card.appendChild(imagem);
+        card.appendChild(info);
+        resolver(card);
+      };
 
-    meta.appendChild(plataformas);
-    meta.appendChild(data);
-    info.appendChild(titulo);
-    info.appendChild(meta);
-    card.appendChild(imagem);
-    card.appendChild(info);
-    return card;
+      imagem.onerror = tentarProximaCapa;
+      tentarProximaCapa();
+    });
   }
 
   fetch('destaques', { cache: 'no-store' })
@@ -458,8 +460,19 @@
         area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">CATÁLOGO</span><h2>Os próximos lançamentos aparecerão aqui.</h2><div class="release-meta"><span>A sincronização automática está aguardando os dados da Steam.</span></div></div></article>';
         return;
       }
-      area.replaceChildren();
-      jogos.forEach(function (jogo) { area.appendChild(criarCard(jogo)); });
+      Promise.all(jogos.map(criarCard)).then(function (cards) {
+        const cardsComCapa = cards.filter(Boolean);
+        area.replaceChildren();
+
+        if (cardsComCapa.length === 0) {
+          area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">LANÇAMENTOS</span><h2>Nenhum lançamento com capa disponível.</h2><div class="release-meta"><span>Os jogos aparecerão aqui quando uma capa válida estiver disponível.</span></div></div></article>';
+          return;
+        }
+
+        cardsComCapa.forEach(function (card) {
+          area.appendChild(card);
+        });
+      });
     })
     .catch(function () {
       area.innerHTML = '<article class="release-card"><div class="release-info"><span class="release-tag">INVENTORY</span><h2>Não foi possível atualizar os lançamentos agora.</h2><div class="release-meta"><span>Tente novamente mais tarde.</span></div></div></article>';
