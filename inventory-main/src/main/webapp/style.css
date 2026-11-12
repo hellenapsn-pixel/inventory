@@ -1127,3 +1127,30 @@ body:not(.home-inventory) .acoes button.btn-favorito:hover {
     font-size: 11px !important;
   }
 }
+
+
+/* Botão de favoritos — acabamento refinado na página Jogos */
+body:not(.home-inventory) .acoes button.btn-favorito {
+  min-height: 44px !important;
+  padding: 11px 14px !important;
+  border: 1px solid rgba(168,85,247,.55) !important;
+  border-radius: 10px !important;
+  background: linear-gradient(135deg,rgba(124,58,237,.16),rgba(168,85,247,.08)) !important;
+  color: #e9d5ff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .35px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05) !important;
+  transition: background .2s,border-color .2s,transform .2s,box-shadow .2s !important;
+}
+body:not(.home-inventory) .acoes button.btn-favorito:hover {
+  background: linear-gradient(135deg,#7c3aed,#9333ea) !important;
+  border-color: #c084fc !important;
+  color: #fff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(124,58,237,.3) !important;
+}
+body:not(.home-inventory) .acoes button.btn-favorito:focus-visible {
+  outline: 2px solid #c084fc !important;
+  outline-offset: 3px !important;
+}
