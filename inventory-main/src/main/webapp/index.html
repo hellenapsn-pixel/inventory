@@ -12,9 +12,38 @@
 <style>
 /* NAVEGAÇÃO UNIFICADA */
 .inventory-header{min-height:74px;height:auto;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:12px clamp(18px,5vw,64px);background:rgba(12,9,17,.96);border-bottom:1px solid #30263a;position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);box-shadow:0 8px 28px rgba(0,0,0,.24)}
-.inventory-brand{display:flex;align-items:center;gap:11px;flex:0 0 auto;color:#f5f3f7;text-decoration:none;font:700 19px 'DM Sans',Arial,sans-serif;letter-spacing:.13em}.inventory-brand:hover{color:#fff}.inventory-brand-icon{width:52px;height:52px;object-fit:cover;object-position:center top;clip-path:inset(0 0 36% 0)}.inventory-brand-name{font:800 19px 'DM Sans',Arial,sans-serif;letter-spacing:.13em;color:#f5f3f7}.brand-dot{color:#a855f7}
-.inventory-nav{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex-wrap:wrap;margin:0}.inventory-nav a{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:8px;color:#aaa1b4;text-decoration:none;font:600 12px 'DM Sans',Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;transition:background .2s,color .2s}.inventory-nav a:hover,.inventory-nav a.nav-current{background:rgba(124,58,237,.16);color:#fff}.inventory-nav a.inventory-exit{margin-left:5px;border:1px solid #493252;color:#cbb8dc}.inventory-nav a.inventory-exit:hover{border-color:#8b5cf6;background:rgba(124,58,237,.2)}
+.inventory-brand{display:flex;align-items:center;gap:11px;flex:0 0 auto;color:#f5f3f7;text-decoration:none;font:700 19px 'Sora',Arial,sans-serif;letter-spacing:.13em}.inventory-brand:hover{color:#fff}.inventory-brand-icon{width:52px;height:52px;object-fit:cover;object-position:center top;clip-path:inset(0 0 36% 0)}.inventory-brand-name{font:800 19px 'Sora',Arial,sans-serif;letter-spacing:.13em;color:#f5f3f7}.brand-dot{color:#a855f7}
+.inventory-nav{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex-wrap:wrap;margin:0}.inventory-nav a{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:8px;color:#aaa1b4;text-decoration:none;font:600 13px 'Sora',Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;transition:background .2s,color .2s}.inventory-nav a:hover,.inventory-nav a.nav-current{background:rgba(124,58,237,.16);color:#fff}.inventory-nav a.inventory-exit{margin-left:5px;border:1px solid #493252;color:#cbb8dc}.inventory-nav a.inventory-exit:hover{border-color:#8b5cf6;background:rgba(124,58,237,.2)}
 @media(max-width:760px){.inventory-header{align-items:flex-start;flex-direction:column;gap:10px;padding:12px 16px}.inventory-brand-icon{width:48px;height:48px}.inventory-nav{width:100%;justify-content:flex-start;gap:3px}.inventory-nav a{padding:8px 9px;font-size:11px}.inventory-nav a.inventory-exit{margin-left:0}}
+
+/* HOME — novo design */
+body.home-inventory{font-family:'Inter',system-ui,sans-serif}
+.home-shell{max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px) 40px}
+.search-strip{padding:56px 0 18px;text-align:center;position:relative}
+.search-strip::before{content:"";position:absolute;left:50%;top:0;width:640px;height:260px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(124,58,237,.28),transparent);pointer-events:none}
+.busca-form{position:relative;display:flex;align-items:center;gap:10px;max-width:720px;margin:0 auto;padding:8px 8px 8px 22px;background:rgba(26,21,34,.85);border:1px solid #30263a;border-radius:999px;box-shadow:0 20px 50px -20px rgba(124,58,237,.45);transition:border-color .2s,box-shadow .2s}
+.busca-form:focus-within{border-color:#a855f7;box-shadow:0 0 0 4px rgba(124,58,237,.18),0 20px 50px -20px rgba(124,58,237,.55)}
+.search-symbol{font-size:22px;color:#a855f7;line-height:1}
+.busca-form input{flex:1;border:0!important;background:transparent!important;box-shadow:none!important;padding:12px 6px;font-size:16px}
+.busca-form button{white-space:nowrap;width:auto;padding:13px 26px}
+.catalog-section{margin-top:44px}
+.catalog-intro{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid #30263a}
+.catalog-kicker{display:block;font:700 11px 'Sora',sans-serif;letter-spacing:.28em;color:#a855f7;margin-bottom:8px}
+.catalog-intro h2{margin:0;font-size:clamp(26px,3.2vw,36px)}
+.catalogo-jogos{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:26px}
+.card-jogo{position:relative;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(160deg,#1d1726,#15111b);border:1px solid #30263a;border-radius:20px;box-shadow:0 18px 40px -20px rgba(0,0,0,.7);transition:transform .25s,border-color .25s,box-shadow .25s}
+.card-jogo:hover{transform:translateY(-6px);border-color:rgba(168,85,247,.55);box-shadow:0 26px 50px -20px rgba(124,58,237,.4)}
+.card-jogo img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .4s}
+.card-jogo:hover img{transform:scale(1.05)}
+.card-jogo::after{content:"";position:absolute;left:0;right:0;top:0;aspect-ratio:3/4;background:linear-gradient(180deg,transparent 55%,rgba(21,17,27,.95));pointer-events:none}
+.card-jogo-conteudo{position:relative;z-index:1;display:flex;flex-direction:column;gap:6px;padding:4px 18px 18px;margin-top:-6px;flex:1}
+.card-jogo-conteudo h3{font-size:16px;font-weight:700;line-height:1.3;margin:0}
+.genero{display:inline-block;align-self:flex-start;margin:0 0 8px;padding:3px 10px;border-radius:999px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);color:#c084fc;font-size:11px;font-weight:600;line-height:1.5;letter-spacing:.03em}
+.botao-biblioteca{margin-top:auto;display:block;text-align:center;padding:11px 14px;border-radius:999px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;text-decoration:none;font:600 13px 'Sora',sans-serif;transition:transform .2s,box-shadow .2s,background .2s}
+.botao-biblioteca:hover{background:linear-gradient(135deg,#9333ea,#c084fc);color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.35)}
+.site-footer{margin-top:70px;padding:28px;text-align:center;border-top:1px solid #30263a;font:700 13px 'Sora',sans-serif;letter-spacing:.3em;color:#746d7d}
+.wordmark-dot{color:#a855f7}
+@media(max-width:600px){.catalogo-jogos{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card-jogo-conteudo{padding:4px 12px 14px}.busca-form button span{display:none}.search-strip{padding-top:32px}}
 </style>
 
 </head>
