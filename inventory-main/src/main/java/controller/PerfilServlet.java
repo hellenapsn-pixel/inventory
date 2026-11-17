@@ -1236,7 +1236,8 @@ public class PerfilServlet extends HttpServlet {
                 "SELECT " +
                 "a.steam_app_id, " +
                 "a.nota, " +
-                "a.comentario " +
+                "a.comentario, " +
+                "a.horas_jogadas " +
                 "FROM avaliacao a " +
                 "WHERE a.id_usuario = ? " +
                 "ORDER BY a.data_avaliacao DESC";
@@ -1277,6 +1278,9 @@ public class PerfilServlet extends HttpServlet {
                                     ),
                                     capaSteam(
                                             appId
+                                    ),
+                                    rs.getDouble(
+                                            "horas_jogadas"
                                     )
                             )
                     );
@@ -1684,6 +1688,12 @@ public class PerfilServlet extends HttpServlet {
             );
         }
 
+        html.append(
+                "<div class='avaliacao-horas'>🎮 " +
+                String.format(java.util.Locale.forLanguageTag("pt-BR"), "%.1f", jogo.horasJogadas) +
+                " horas jogadas</div>"
+        );
+
         html.append("</div>");
         html.append("</article>");
 
@@ -1752,6 +1762,7 @@ public class PerfilServlet extends HttpServlet {
         double nota;
         String comentario;
         String capa;
+        double horasJogadas;
 
         JogoInfo(
                 String titulo,
@@ -1760,11 +1771,23 @@ public class PerfilServlet extends HttpServlet {
                 String comentario,
                 String capa) {
 
+            this(titulo, appId, nota, comentario, capa, 0);
+        }
+
+        JogoInfo(
+                String titulo,
+                int appId,
+                double nota,
+                String comentario,
+                String capa,
+                double horasJogadas) {
+
             this.titulo = titulo;
             this.appId = appId;
             this.nota = nota;
             this.comentario = comentario;
             this.capa = capa;
+            this.horasJogadas = horasJogadas;
         }
     }
 
