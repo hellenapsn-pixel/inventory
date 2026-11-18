@@ -136,6 +136,7 @@ public class JogosServlet extends HttpServlet {
         html.append("<!DOCTYPE html>");
         html.append("<html lang='pt-BR'>");
         html.append("<head>");
+        html.append("<link rel='icon' type='image/png' href='" + request.getContextPath() + "/favicon.png'>");
         html.append("<meta charset='UTF-8'>");
         html.append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
         html.append("<title>Jogos - Inventory</title>");

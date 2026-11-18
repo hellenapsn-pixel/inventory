@@ -68,6 +68,7 @@ public class VisualizarBancoServlet extends HttpServlet {
             }
 
             out.println("<!doctype html><html lang='pt-BR'><head><meta charset='UTF-8'>");
+            out.println("<link rel='icon' type='image/png' href='" + request.getContextPath() + "/favicon.png'>");
             out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
             out.println("<title>Banco Inventory</title><style>");
             out.println("body{font-family:system-ui,Arial;margin:0;padding:14px;background:#f3f4f6;color:#202124}");
