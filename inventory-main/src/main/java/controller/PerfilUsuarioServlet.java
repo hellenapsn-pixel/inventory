@@ -116,6 +116,7 @@ public class PerfilUsuarioServlet extends HttpServlet {
             html.append("<html lang='pt-BR'>");
 
             html.append("<head>");
+        html.append("<link rel='icon' type='image/png' href='" + request.getContextPath() + "/favicon.png'>");
 
             html.append("<meta charset='UTF-8'>");
 

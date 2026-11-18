@@ -143,6 +143,7 @@ public class AvaliacaoServlet extends HttpServlet {
             html.append("<html lang='pt-BR'>");
 
             html.append("<head>");
+        html.append("<link rel='icon' type='image/png' href='" + request.getContextPath() + "/favicon.png'>");
 
             html.append(
                     "<meta charset='UTF-8'>"
@@ -159,9 +160,7 @@ public class AvaliacaoServlet extends HttpServlet {
                     " - Inventory</title>"
             );
 
-            html.append(
-                    "<link rel='icon' type='image/png' href='logo.png'>"
-            );
+            
 
             html.append(
                     "<link href='https://fonts.googleapis.com/css2?" +
